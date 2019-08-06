@@ -11,8 +11,11 @@ var usersRouter = require('./routes/users');
 var app = express();
 
 // view engine setup
+var ejs=require('ejs');
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
+app.engine('html',ejs.__express);
+app.set('view engine', 'html');
+
 
 app.use(logger('dev'));
 app.use(express.json());
