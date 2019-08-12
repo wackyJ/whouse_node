@@ -1,8 +1,9 @@
-require('./db');
 var createError = require('http-errors');
 var express = require('express');
+// 用于处理文件与目录的路径
 var path = require('path');
 var cookieParser = require('cookie-parser');
+// 用来记录日志的中间件
 var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
@@ -11,11 +12,11 @@ var usersRouter = require('./routes/users');
 var app = express();
 
 // view engine setup
+// 修改为使用后缀为.html的模板文件
 var ejs=require('ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.engine('html',ejs.__express);
 app.set('view engine', 'html');
-
 
 app.use(logger('dev'));
 app.use(express.json());
