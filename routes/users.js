@@ -6,8 +6,8 @@ router.get('/', function(req, res, next) {
   res.send('respond with a resource');
 });
 
-//添加用户登录路由
-router.post('/v1/registeruser',(req,res)=>{
+//1.添加用户注册路由
+router.post('/v1/register',(req,res)=>{
   // 获取前端传递的数据
   var info=req.body;
   //执行sql语句
@@ -22,4 +22,8 @@ router.post('/v1/registeruser',(req,res)=>{
   })
 });
 
+//2.添加用户登录路由
+router.get('v1/login:uname&:upwd',(req,res)=>{
+  
+});
 module.exports = router;
