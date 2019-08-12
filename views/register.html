@@ -10,7 +10,7 @@
 			//获取用户输入的信息
 			var $uname=uname.value;
 			var $upwd=upwd.value;
-			var $upwd_agin=upwd_agin.value;
+			/*var $upwd_agin=upwd_agin.value;
 			var $email=email.value;
 			var $uphone=uphone.value;
 			var $user_name=user_name.value;
@@ -66,7 +66,7 @@
 				}
 			}
 			xhr.open("post","/users/v1/register",true);
-			var formdata="uname="+$uname+"&upwd="+$upwd+"&email="+$email+"&phone="+$uphone+"&user_name="+$user_name+"&gender="+$gender;
+			var formdata="uname="+$uname+"&upwd="+$upwd;
 			//console.log(formdata);
 			xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
 			xhr.send(formdata);
@@ -171,14 +171,14 @@
 <body>
 	用户名称：<input type="text" id="uname" placeholder="请输入您的用户名" onblur="verify_uname()" ><span id="s1"></span><br>
 	用户密码：<input type="text" id="upwd" placeholder="请输入您的密码"><br>
-	密码确认：<input type="text" id="upwd_agin" placeholder="再次输入密码" onblur="verfy_upwd()"><span id="s2"></span><br>
+	<!-- 密码确认：<input type="text" id="upwd_agin" placeholder="再次输入密码" onblur="verfy_upwd()"><span id="s2"></span><br>
 	电子邮箱：<input type="text" id="email" placeholder="请输入您的电子邮箱" onblur="verify_email()"><span id="s3"></span><br>
 	电话号码：<input type="text" id="uphone" placeholder="请输入您的电话号码" onblur="verify_phone()"><span id="s4"></span><br>
 	真实姓名：<input type="text" id="user_name" placeholder="请输入您的真实姓名"><br>
 	用户性别：
 	<input type="radio" name="gender" id="male"><label for="male">男</label>
 	<input type="radio" name="gender" id="female"><label for="female">女</label>
-	<input type="radio" name="gender" id="none" checked><label for="none" >保密</label><br>
+	<input type="radio" name="gender" id="none" checked><label for="none" >保密</label><br> -->
 	<button onclick="register()">注册</button>
 </body>
 </html>
