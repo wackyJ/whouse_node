@@ -2,9 +2,12 @@ var createError = require('http-errors');
 var express = require('express');
 // 用于处理文件与目录的路径
 var path = require('path');
+//加载解析cookie的插件
 var cookieParser = require('cookie-parser');
 // 用来记录日志的中间件
 var logger = require('morgan');
+//加载body-parser模块
+var bodyParser = require('body-parser');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -23,6 +26,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);

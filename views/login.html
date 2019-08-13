@@ -44,10 +44,13 @@
 				}
 			}
 			//打开链接，创建请求
-			xhr.open("get","users/v1/login/"+$uname+"&"+$upwd,true);
-			//发送请求
-			xhr.send(null);
+			xhr.open("post","/users/v1/login",true);
+			var formdata="uname="+$uname+"&upwd="+$upwd;
+			//console.log(formdata);
+			xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+			xhr.send(formdata);
 		}
+		
     </script>
 </head>
 <body>
