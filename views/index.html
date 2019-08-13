@@ -4,57 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title></title>
-    <script>
-      	function show1(){
-			if(!uname.value){
-				s1.innerHTML="用户名不能为空";
-			}else{
-				s1.innerHTML="";
-			}
-		}
-		function show2(){
-				s1.innerHTML="请输入用户名";
-		}
-		function show3(){
-			if(!upwd.value){
-				s2.innerHTML="密码不能为空";
-			}else{
-				s2.innerHTML="";
-			}
-		}
-		function show4(){
-			s2.innerHTML="请输入密码";
-		}
-		function get_login(){
-			//获取用户数据
-			var $uname=uname.value;
-            var $upwd=upwd.value;
-			if(!$uname||!$upwd){
-				return;
-			}
-			//创建异步对象
-			var xhr=new XMLHttpRequest();
-			//绑定监听，获取响应数据
-			xhr.onreadystatechange=function(){
-				if(xhr.readyState==4&&xhr.status==200){
-					var result=xhr.responseText;
-					console.log(result);
-					d1.innerHTML=result;
-				}
-			}
-			//打开链接，创建请求
-			xhr.open("get","users/v1/login/"+$uname+"&"+$upwd,true);
-			//发送请求
-			xhr.send(null);
-		}
-    </script>
+    <title>主页</title>
 </head>
 <body>
-    <h1>欢迎来到express</h1>
-    <div id="d1"></div>
-    用户名称：<input type="text" id="uname" onblur="show1()" onfocus="show2()"><span id="s1"></span><br>
-    登录密码：<input type="password" id="upwd" onblur="show3()" onfocus="show4()"><span id="s2"></span><br>
-    <button onclick="get_login()">登录</button>
+    <h1>这是主页的页面</h1>
 </body>
 </html>
