@@ -1,5 +1,7 @@
 var express = require('express');
 var router = express.Router();
+var pool = require('../pool');
+var jwt = require('jsonwebtoken');
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
@@ -32,10 +34,10 @@ router.post("/v1/login",(req, res)=>{
           let status = jwt.sign(content, secretOrPrivateKey, {
                   expiresIn: 60*60*1  // 1小时过期
           });
-          // 将status存入数据库
-          pool.query("insert into wh_user set token=?",status,(err,result)=>{
+           // 将status存入数据库
+           pool.query("insert into wh_user set status=?",status,(err,result1)=>{
             if(err)throw err;
-            if(result.affectedRows>0){
+            if(result1.affectedRows>0){
               // 返回给前端用户权限id，以及登录状态status
               res.send({code:200,msg:"login successfully",token_id:result.token_id,status:status})
             }
