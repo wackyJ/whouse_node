@@ -8,5 +8,63 @@
 </head>
 <body>
     <h1>这是主页的页面</h1>
+    <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">  
+    <title>ECharts</title>
+    <!-- 引入 echarts.js -->
+    <script src="javascripts/echarts.min.js"></script>
+    <!-- 引入jQuery.js -->
+    <script src="javascripts/jquery-1.11.3.js"></script>
+</head>
+<body>
+    <!-- <a href="javascript:sales;">生成报表</a> -->
+    <button onclick="sale()">生成月销售额报表</button>
+    <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <div id="main" style="width: 600px;height:400px;">
+        <h1>财务报表图</h1>
+    </div>
+    <script type="text/javascript">
+        function  sale(){
+            $.ajax({    
+                url:"http://127.0.0.1:3000/finance/v1/monthlySales",
+                type:"get",
+                // dataType:"json",
+                success:function(result){
+                    var sales=result.map(v=>v["total"]);
+                    var productNames=result.map(v=>`${v["MONTH(delivery_date)"]}月`);
+                    console.log(sales);
+                    console.log(productNames);
+                    // 基于准备好的dom，初始化echarts实例
+                    var myChart = echarts.init(document.getElementById('main'));
+                    // 指定图表的配置项和数据
+                    var option = {
+                        title: {
+                            text: '月销报表'
+                        },
+                        tooltip: {},
+                        legend: {
+                            data:['月销售额']
+                        },
+                        xAxis: {
+                            data: productNames
+                        },
+                        yAxis: {},
+                        series: [{
+                            name: '月销售额',
+                            type: 'bar',
+                            data: sales
+                        }]
+                    };
+
+                    // 使用刚指定的配置项和数据显示图表。
+                    myChart.setOption(option);
+                }
+            });
+        }
+    </script>
+</body>
+</html>
 </body>
 </html>
