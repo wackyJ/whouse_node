@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2019-08-27 20:42:12
+Date: 2019-08-30 20:03:23
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -42,17 +42,19 @@ INSERT INTO `wh_client` VALUES ('3', 'liangliang', '浙江省杭州市拱墅区�
 DROP TABLE IF EXISTS `wh_order`;
 CREATE TABLE `wh_order` (
   `oid` int(11) NOT NULL AUTO_INCREMENT COMMENT '自动增长，订单主键',
-  `onum` int(11) NOT NULL COMMENT '订单编号，供客户查询订单',
   `pid` int(11) NOT NULL,
   `sell_price` decimal(10,2) NOT NULL,
   `ocount` int(11) NOT NULL,
   `total` decimal(10,2) NOT NULL,
+  `onum` int(11) NOT NULL COMMENT '订单编号，供客户查询订单',
   `cid` int(11) NOT NULL,
   `remark` varchar(32) DEFAULT NULL,
   `create_date` date NOT NULL,
   `delivery_date` date DEFAULT NULL,
   `ostatus` varchar(32) NOT NULL,
   `uid` int(11) NOT NULL,
+  `firstAdress` varchar(32) DEFAULT NULL,
+  `lastAdress` varchar(32) DEFAULT NULL,
   PRIMARY KEY (`oid`),
   KEY `pid` (`pid`),
   KEY `cid` (`cid`),
@@ -65,14 +67,14 @@ CREATE TABLE `wh_order` (
 -- ----------------------------
 -- Records of wh_order
 -- ----------------------------
-INSERT INTO `wh_order` VALUES ('3', '2019030501', '1', '50.00', '25', '1250.00', '2', null, '2019-03-05', '2019-03-05', '1', '1');
-INSERT INTO `wh_order` VALUES ('4', '2019040801', '1', '50.00', '15', '750.00', '2', null, '2019-04-08', '2019-04-08', '1', '1');
-INSERT INTO `wh_order` VALUES ('5', '2019051101', '1', '50.00', '20', '1000.00', '1', null, '2019-05-11', '2019-05-11', '1', '1');
-INSERT INTO `wh_order` VALUES ('6', '2019061301', '1', '50.00', '3', '150.00', '3', null, '2019-06-13', '2019-06-13', '1', '1');
-INSERT INTO `wh_order` VALUES ('7', '2019071501', '1', '50.00', '10', '500.00', '1', null, '2019-07-15', '2019-07-15', '1', '1');
-INSERT INTO `wh_order` VALUES ('8', '2019081701', '1', '50.00', '3', '150.00', '3', null, '2019-08-17', '2019-08-17', '1', '1');
-INSERT INTO `wh_order` VALUES ('9', '2019081901', '1', '50.00', '2', '100.00', '1', null, '2019-08-19', '2019-08-19', '1', '1');
-INSERT INTO `wh_order` VALUES ('10', '2019081902', '1', '50.00', '1', '50.00', '1', null, '2019-08-19', '2019-08-19', '1', '1');
+INSERT INTO `wh_order` VALUES ('3', '1', '50.00', '25', '1250.00', '2019030501', '2', null, '2019-03-05', '2019-03-05', '1', '1', null, null);
+INSERT INTO `wh_order` VALUES ('4', '1', '50.00', '15', '750.00', '2019040801', '2', null, '2019-04-08', '2019-04-08', '1', '1', null, null);
+INSERT INTO `wh_order` VALUES ('5', '1', '50.00', '20', '1000.00', '2019051101', '1', null, '2019-05-11', '2019-05-11', '1', '1', null, null);
+INSERT INTO `wh_order` VALUES ('6', '1', '50.00', '3', '150.00', '2019061301', '3', null, '2019-06-13', '2019-06-13', '1', '1', null, null);
+INSERT INTO `wh_order` VALUES ('7', '1', '50.00', '10', '500.00', '2019071501', '1', null, '2019-07-15', '2019-07-15', '1', '1', null, null);
+INSERT INTO `wh_order` VALUES ('8', '1', '50.00', '3', '150.00', '2019081701', '3', null, '2019-08-17', '2019-08-17', '1', '1', null, null);
+INSERT INTO `wh_order` VALUES ('9', '1', '50.00', '2', '100.00', '2019081901', '1', null, '2019-08-19', '2019-08-19', '1', '1', null, null);
+INSERT INTO `wh_order` VALUES ('10', '1', '50.00', '1', '50.00', '2019081902', '1', null, '2019-08-19', '2019-08-19', '1', '1', null, null);
 
 -- ----------------------------
 -- Table structure for `wh_product`
@@ -147,9 +149,6 @@ INSERT INTO `wh_product` VALUES ('37', '9', '华硕FL5900UQ', '4799.00', '顽石
 INSERT INTO `wh_product` VALUES ('38', '10', '神舟战神Z7M-KP7GT', '6199.00', 'Z7M GT【i7 128G+1T GTX1050Ti】', 'Windows 10', '8G', '全高清屏(1920×1080)', 'GTX1050Ti', 'Intel i7标准电压版', '4G', '游戏本', '128G+1T', '151123456789', '441', null, '0', null);
 INSERT INTO `wh_product` VALUES ('39', '10', '神舟战神Z7M', '5499.00', '战神Z7M【四核i7 GTX965M】', 'Windows 10', '8G', '全高清屏(1920×1080)', 'GTX965M', 'Intel i7标准电压版', '4G', '游戏本', '128G+1T', '152123456789', '1289', null, '1', null);
 INSERT INTO `wh_product` VALUES ('40', '10', '神舟战神Z7M-SL5D1', '4499.00', '战神Z7M【四核i5 GTX965M】', 'Windows 10', '8G', '全高清屏(1920×1080)', 'GTX965M', 'Intel i7标准电压版', '2G', '游戏本', '1T', '153123456789', '231', null, '0', null);
-INSERT INTO `wh_product` VALUES ('41', '10', '神舟战神Z6-KP5GT', '5199.00', 'Z6 GT【i5 128G+1T GTX1050】', 'Windows 10', '8G', '全高清屏(1920×1080)', 'GTX1050', 'Intel i5标准电压版', '4G', '游戏本', '128G+1T', '154123456789', '469', null, '1', null);
-INSERT INTO `wh_product` VALUES ('42', '10', '神舟战神G6', '5499.00', '战神G6【17.3英寸 GTX960M】', 'Windows 10', '8G', '全高清屏(1920×1080)', 'GTX960M', 'Intel i7标准电压版', '4G', '游戏本', '256固态', '155123456789', '1223', null, '0', null);
-INSERT INTO `wh_product` VALUES ('43', '10', '神舟战神Z6-KP7GT', '5699.00', 'Z6 GT【i7 128G+1T GTX1050】', 'Windows 10', '8G', '全高清屏(1920×1080)', 'GTX1050', 'Intel i7标准电压版', '2G', '游戏本', '128G+1T', '156123456789', '1844', null, '1', null);
 
 -- ----------------------------
 -- Table structure for `wh_product_family`

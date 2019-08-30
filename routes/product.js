@@ -29,9 +29,9 @@ router.post("/v1/delRecord",(req,res)=>{
   let sql=`DELETE FROM wh_product WHERE pid = ?;`;
   query(sql,[_pid]).then(result=>{
     if(result.affectedRows>0){
-			res.send({code:1,msg:"delete success"});
+			res.send({code:200,msg:"delete success"});
 		}else{
-			res.send({code:-1,msg:"delect faile"});
+			res.send({code:201,msg:"delect faile"});
 		}
   })
 })
