@@ -12,6 +12,8 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var financeRouter = require('./routes/finance');
 var productRouter = require('./routes/product');
+var orderRouter = require('./routes/order');
+// var bodyParser =  require('body-parser');
 
 var app = express();
 
@@ -28,11 +30,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+// app.use(bodyParser.urlencoded({extended:false}));
 //使用路由器，并挂载到相应路径下
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/finance', financeRouter);
 app.use('/product',productRouter);
+app.use('/order',orderRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req,res, next) {

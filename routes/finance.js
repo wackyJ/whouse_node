@@ -1,6 +1,6 @@
-var express = require('express');
-var router = express.Router();
-var pool = require('../pool');
+const express = require('express');
+const pool = require('../pool');
+const router = express.Router();
 
 router.get("/v1/monthlySales",(req,res)=>{
     pool.query("select month(delivery_date),SUM(total) AS total from wh_order GROUP BY month(delivery_date)",(err,result)=>{
