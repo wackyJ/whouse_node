@@ -3,14 +3,14 @@ const express = require("express");
 const router= express.Router();
 
 router.get("/v1/repertory",(req,res)=>{
-  var output={
+  let output={
     count:0,
     pageSize:30,
     pageCount:0,
     pno:req.query.pno||0,
     data:[]
   };
-  var sql="SELECT * FROM wh_product";
+  let sql="SELECT * FROM wh_product";
   query(sql,[])
   .then(result=>{
     output.count=result.length;
@@ -24,10 +24,29 @@ router.get("/v1/repertory",(req,res)=>{
   })
 });
 
-router.post("/v1/delRecord",(req,res)=>{
-  let _pid=req.body.params.pid;
+/*router.post("/v1/updata",(req,res)=>{
+  console.log(123);
+  /*let $propName = req.body.params.propName;
+  let $value = req.body.params.value;
+  let $pid=req.query.pid;
+  console.log($propName);
+  console.log($value);
+  console.log($pid);
+  let sql="UPDATE wh_product SET ? = ?  WHERE ?;";
+  query(sql,[$propName,$value,$pid]).then(result=>{
+    // if(result.affectedRows>0){
+      console.log(123456);
+			res.send({code:200,msg:"updata success"});*/
+		// }else{
+		// 	res.send({code:201,msg:"updata faile"});
+		// }
+  // })
+// })
+
+router.delete("/v1/deldata",(req,res)=>{
+  let $pid=req.query.pid;
   let sql=`DELETE FROM wh_product WHERE pid = ?;`;
-  query(sql,[_pid]).then(result=>{
+  query(sql,[$pid]).then(result=>{
     if(result.affectedRows>0){
 			res.send({code:200,msg:"delete success"});
 		}else{
