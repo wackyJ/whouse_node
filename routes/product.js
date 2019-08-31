@@ -24,15 +24,14 @@ router.get("/v1/repertory",(req,res)=>{
   })
 });
 
-/*router.post("/v1/updata",(req,res)=>{
-  console.log(123);
-  /*let $propName = req.body.params.propName;
+router.post("/v1/updata",(req,res)=>{
+  let $propName = req.body.params.propName;
   let $value = req.body.params.value;
-  let $pid=req.query.pid;
+  let $pid=req.body.params.pid;
   console.log($propName);
   console.log($value);
   console.log($pid);
-  let sql="UPDATE wh_product SET ? = ?  WHERE ?;";
+  /*let sql="UPDATE wh_product SET ? = ?  WHERE ?;";
   query(sql,[$propName,$value,$pid]).then(result=>{
     // if(result.affectedRows>0){
       console.log(123456);
@@ -41,7 +40,7 @@ router.get("/v1/repertory",(req,res)=>{
 		// 	res.send({code:201,msg:"updata faile"});
 		// }
   // })
-// })
+ })
 
 router.delete("/v1/deldata",(req,res)=>{
   let $pid=req.query.pid;
