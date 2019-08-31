@@ -30,7 +30,7 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(patresh.join(__dirname, 'public')));
+// app.use(express.static(patresh.join(__dirname, 'public')));
 // app.use(bodyParser.urlencoded({extended:false}));
 //使用路由器，并挂载到相应路径下
 // app.use('/', indexRouter);
