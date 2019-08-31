@@ -13,6 +13,7 @@ var usersRouter = require('./routes/users');
 var financeRouter = require('./routes/finance');
 var productRouter = require('./routes/product');
 var orderRouter = require('./routes/order');
+var settingRouter = require('./routes/setting');
 // var bodyParser =  require('body-parser');
 
 var app = express();
@@ -37,6 +38,7 @@ app.use('/users', usersRouter);
 app.use('/finance', financeRouter);
 app.use('/product',productRouter);
 app.use('/order',orderRouter);
+app.use('/setting',settingRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req,res, next) {
