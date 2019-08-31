@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2019-08-30 20:03:23
+Date: 2019-08-31 14:38:47
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -42,10 +42,6 @@ INSERT INTO `wh_client` VALUES ('3', 'liangliang', '浙江省杭州市拱墅区�
 DROP TABLE IF EXISTS `wh_order`;
 CREATE TABLE `wh_order` (
   `oid` int(11) NOT NULL AUTO_INCREMENT COMMENT '自动增长，订单主键',
-  `pid` int(11) NOT NULL,
-  `sell_price` decimal(10,2) NOT NULL,
-  `ocount` int(11) NOT NULL,
-  `total` decimal(10,2) NOT NULL,
   `onum` int(11) NOT NULL COMMENT '订单编号，供客户查询订单',
   `cid` int(11) NOT NULL,
   `remark` varchar(32) DEFAULT NULL,
@@ -56,25 +52,52 @@ CREATE TABLE `wh_order` (
   `firstAdress` varchar(32) DEFAULT NULL,
   `lastAdress` varchar(32) DEFAULT NULL,
   PRIMARY KEY (`oid`),
-  KEY `pid` (`pid`),
-  KEY `cid` (`cid`),
-  KEY `uid` (`uid`),
-  CONSTRAINT `wh_order_ibfk_1` FOREIGN KEY (`pid`) REFERENCES `wh_product` (`pid`),
-  CONSTRAINT `wh_order_ibfk_2` FOREIGN KEY (`cid`) REFERENCES `wh_client` (`cid`),
-  CONSTRAINT `wh_order_ibfk_3` FOREIGN KEY (`uid`) REFERENCES `wh_user` (`uid`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+  KEY `cid` (`cid`) USING BTREE,
+  KEY `uid` (`uid`) USING BTREE,
+  CONSTRAINT `wh_order_ibfk_1` FOREIGN KEY (`cid`) REFERENCES `wh_client` (`cid`),
+  CONSTRAINT `wh_order_ibfk_2` FOREIGN KEY (`uid`) REFERENCES `wh_user` (`uid`)
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
 -- ----------------------------
 -- Records of wh_order
 -- ----------------------------
-INSERT INTO `wh_order` VALUES ('3', '1', '50.00', '25', '1250.00', '2019030501', '2', null, '2019-03-05', '2019-03-05', '1', '1', null, null);
-INSERT INTO `wh_order` VALUES ('4', '1', '50.00', '15', '750.00', '2019040801', '2', null, '2019-04-08', '2019-04-08', '1', '1', null, null);
-INSERT INTO `wh_order` VALUES ('5', '1', '50.00', '20', '1000.00', '2019051101', '1', null, '2019-05-11', '2019-05-11', '1', '1', null, null);
-INSERT INTO `wh_order` VALUES ('6', '1', '50.00', '3', '150.00', '2019061301', '3', null, '2019-06-13', '2019-06-13', '1', '1', null, null);
-INSERT INTO `wh_order` VALUES ('7', '1', '50.00', '10', '500.00', '2019071501', '1', null, '2019-07-15', '2019-07-15', '1', '1', null, null);
-INSERT INTO `wh_order` VALUES ('8', '1', '50.00', '3', '150.00', '2019081701', '3', null, '2019-08-17', '2019-08-17', '1', '1', null, null);
-INSERT INTO `wh_order` VALUES ('9', '1', '50.00', '2', '100.00', '2019081901', '1', null, '2019-08-19', '2019-08-19', '1', '1', null, null);
-INSERT INTO `wh_order` VALUES ('10', '1', '50.00', '1', '50.00', '2019081902', '1', null, '2019-08-19', '2019-08-19', '1', '1', null, null);
+INSERT INTO `wh_order` VALUES ('3', '2019030501', '2', '', '2019-03-05', '2019-03-05', '5', '1', '', '');
+INSERT INTO `wh_order` VALUES ('4', '2019040801', '2', '', '2019-04-08', '2019-04-08', '5', '1', '', '');
+INSERT INTO `wh_order` VALUES ('5', '2019051101', '1', '', '2019-05-11', '2019-05-11', '5', '1', '', '');
+INSERT INTO `wh_order` VALUES ('6', '2019061301', '3', '', '2019-06-13', '2019-06-13', '5', '1', '', '');
+INSERT INTO `wh_order` VALUES ('7', '2019071501', '1', '', '2019-07-15', '2019-07-15', '5', '1', '', '');
+INSERT INTO `wh_order` VALUES ('8', '2019081701', '3', '', '2019-08-17', '2019-08-17', '5', '1', '', '');
+INSERT INTO `wh_order` VALUES ('9', '2019081901', '1', '', '2019-08-19', '2019-08-19', '5', '1', '', '');
+INSERT INTO `wh_order` VALUES ('10', '2019081902', '1', '', '2019-08-19', '2019-08-19', '5', '1', '', '');
+
+-- ----------------------------
+-- Table structure for `wh_order_detail`
+-- ----------------------------
+DROP TABLE IF EXISTS `wh_order_detail`;
+CREATE TABLE `wh_order_detail` (
+  `did` int(11) NOT NULL AUTO_INCREMENT,
+  `onum` int(11) DEFAULT NULL,
+  `pid` int(11) DEFAULT NULL,
+  `price` decimal(10,2) DEFAULT NULL,
+  `pcount` int(11) DEFAULT NULL,
+  `create_date` date DEFAULT NULL,
+  `delivery_date` date DEFAULT NULL,
+  PRIMARY KEY (`did`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of wh_order_detail
+-- ----------------------------
+INSERT INTO `wh_order_detail` VALUES ('0', '2018041211', '4', '7888.00', '10', '2018-04-12', '2018-04-12');
+INSERT INTO `wh_order_detail` VALUES ('1', '2019030501', '1', '6988.00', '22', '2019-03-05', '2019-03-05');
+INSERT INTO `wh_order_detail` VALUES ('2', '2019030501', '2', '8268.00', '10', '2019-03-05', '2019-03-05');
+INSERT INTO `wh_order_detail` VALUES ('3', '2019040801', '1', '6988.00', '2', '2019-04-08', '2019-04-08');
+INSERT INTO `wh_order_detail` VALUES ('4', '2019051101', '4', '7888.00', '1', '2019-05-11', '2019-05-11');
+INSERT INTO `wh_order_detail` VALUES ('5', '2019061301', '3', '7488.00', '5', '2019-06-13', '2019-06-13');
+INSERT INTO `wh_order_detail` VALUES ('6', '2019071501', '8', '3499.00', '3', '2019-07-15', '2019-07-15');
+INSERT INTO `wh_order_detail` VALUES ('7', '2019081701', '5', '4999.00', '5', '2019-08-17', '2019-08-17');
+INSERT INTO `wh_order_detail` VALUES ('8', '2019081901', '13', '4299.00', '3', '2019-08-19', '2019-08-19');
+INSERT INTO `wh_order_detail` VALUES ('9', '2019081902', '11', '5399.00', '5', '2019-08-19', '2019-08-19');
 
 -- ----------------------------
 -- Table structure for `wh_product`
@@ -222,6 +245,30 @@ CREATE TABLE `wh_purchase` (
 
 -- ----------------------------
 -- Records of wh_purchase
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for `wh_receiver_address`
+-- ----------------------------
+DROP TABLE IF EXISTS `wh_receiver_address`;
+CREATE TABLE `wh_receiver_address` (
+  `aid` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) DEFAULT NULL,
+  `receiver` varchar(16) DEFAULT NULL,
+  `province` varchar(16) DEFAULT NULL,
+  `city` varchar(16) DEFAULT NULL,
+  `county` varchar(16) DEFAULT NULL,
+  `address` varchar(128) DEFAULT NULL,
+  `cellphone` varchar(16) DEFAULT NULL,
+  `fixedphone` varchar(16) DEFAULT NULL,
+  `postcode` char(6) DEFAULT NULL,
+  `tag` varchar(16) DEFAULT NULL,
+  `is_default` tinyint(1) DEFAULT NULL,
+  PRIMARY KEY (`aid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of wh_receiver_address
 -- ----------------------------
 
 -- ----------------------------
