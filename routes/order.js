@@ -2,7 +2,7 @@ const express = require("express");
 const query = require("./query");
 const router = express.Router();
 
-router.post("/v1/createOrder",(req,res)=>{
+router.post("/v1/OrderSubmission",(req,res)=>{
   res.send("success");
   /*var $orderForm = req.body.params.orderForm;
   // var $orderProduct = $orderForm.orderProduct;
@@ -23,6 +23,12 @@ router.post("/v1/createOrder",(req,res)=>{
 
     }
   }*/
+});
+
+router.get("/v1/OrderSearch",(req,res)=>{
+
 })
+
+
 
 module.exports = router;

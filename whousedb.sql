@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2019-08-31 16:03:56
+Date: 2019-09-01 21:20:48
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -83,12 +83,11 @@ CREATE TABLE `wh_order_detail` (
   `create_date` date DEFAULT NULL,
   `delivery_date` date DEFAULT NULL,
   PRIMARY KEY (`did`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of wh_order_detail
 -- ----------------------------
-INSERT INTO `wh_order_detail` VALUES ('0', '2018041211', '4', '7888.00', '10', '2018-04-12', '2018-04-12');
 INSERT INTO `wh_order_detail` VALUES ('1', '2019030501', '1', '6988.00', '22', '2019-03-05', '2019-03-05');
 INSERT INTO `wh_order_detail` VALUES ('2', '2019030501', '2', '8268.00', '10', '2019-03-05', '2019-03-05');
 INSERT INTO `wh_order_detail` VALUES ('3', '2019040801', '1', '6988.00', '2', '2019-04-08', '2019-04-08');
@@ -98,6 +97,7 @@ INSERT INTO `wh_order_detail` VALUES ('6', '2019071501', '8', '3499.00', '3', '2
 INSERT INTO `wh_order_detail` VALUES ('7', '2019081701', '5', '4999.00', '5', '2019-08-17', '2019-08-17');
 INSERT INTO `wh_order_detail` VALUES ('8', '2019081901', '13', '4299.00', '3', '2019-08-19', '2019-08-19');
 INSERT INTO `wh_order_detail` VALUES ('9', '2019081902', '11', '5399.00', '5', '2019-08-19', '2019-08-19');
+INSERT INTO `wh_order_detail` VALUES ('10', '2018041211', '4', '7888.00', '10', '2018-04-12', '2018-04-12');
 
 -- ----------------------------
 -- Table structure for `wh_product`
@@ -107,7 +107,7 @@ CREATE TABLE `wh_product` (
   `pid` int(11) NOT NULL AUTO_INCREMENT,
   `family_id` int(11) DEFAULT NULL,
   `pname` varchar(32) DEFAULT NULL,
-  `price` decimal(10,2) DEFAULT NULL,
+  `sell_price` decimal(10,2) DEFAULT NULL,
   `spec` varchar(64) DEFAULT NULL,
   `os` varchar(32) DEFAULT NULL,
   `memory` varchar(32) DEFAULT NULL,
@@ -127,12 +127,12 @@ CREATE TABLE `wh_product` (
   KEY `family_id` (`family_id`),
   CONSTRAINT `wh_product_ibfk_1` FOREIGN KEY (`pv_id`) REFERENCES `wh_provider` (`pv_id`),
   CONSTRAINT `wh_product_ibfk_2` FOREIGN KEY (`family_id`) REFERENCES `wh_product_family` (`fid`)
-) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of wh_product
 -- ----------------------------
-INSERT INTO `wh_product` VALUES ('1', '1', 'AppleMacBook Air', '6988.00', '双核i5/8GB内存/128GB闪存', 'MacOS', '8G', '1920*1080', '集成显卡', 'Intel i5低功耗版', '其它', '轻薄本', '128G固态', '150123456789', '2968', null, '1', '1');
+INSERT INTO `wh_product` VALUES ('1', '1', 'AppleMacBook Air', '69881.00', '双核i5/8GB内存/128GB闪存', 'MacOS', '8G', '1920*1080', '集成显卡', 'Intel i5低功耗版', '其它', '轻薄本', '128G固态', '150123456789', '2968', null, '1', '1');
 INSERT INTO `wh_product` VALUES ('2', '1', 'AppleMacBook Air', '8268.00', '双核i5/8GB内存/256GB闪存', 'MacOS', '8G', '1920*1080', '集成显卡', 'Intel i5低功耗版', '其它', '轻薄本', '256G固态', '150223456789', '1922', null, '0', null);
 INSERT INTO `wh_product` VALUES ('3', '1', 'AppleMacBook Air', '7488.00', '定制款：双核i7/8G内存/128G闪存', 'MacOS', '8G', '1920*1080', '集成显卡', 'Intel i7低功耗版', '其它', '轻薄本', '128G固态', '150323456789', '733', null, '0', null);
 INSERT INTO `wh_product` VALUES ('4', '1', 'AppleMacBook Air', '7888.00', '定制款：双核i7/8G内存/256G闪存', 'MacOS', '8G', '1920*1080', '集成显卡', 'Intel i7低功耗版', '其它', '轻薄本', '256G固态', '150323456789', '105', null, '0', null);
@@ -171,7 +171,6 @@ INSERT INTO `wh_product` VALUES ('36', '9', '华硕FL5900U', '4799.00', '顽石�
 INSERT INTO `wh_product` VALUES ('37', '9', '华硕FL5900UQ', '4799.00', '顽石高速【i74G512SSD NV940MX】', 'Windows 10', '4G', '全高清屏(1920*1080)', '入门级游戏独立显卡', 'Intel i7低功耗版', '2G', '游戏本', '512G固态', '1450123456789', '341', null, '0', null);
 INSERT INTO `wh_product` VALUES ('38', '10', '神舟战神Z7M-KP7GT', '6199.00', 'Z7M GT【i7 128G+1T GTX1050Ti】', 'Windows 10', '8G', '全高清屏(1920×1080)', 'GTX1050Ti', 'Intel i7标准电压版', '4G', '游戏本', '128G+1T', '151123456789', '441', null, '0', null);
 INSERT INTO `wh_product` VALUES ('39', '10', '神舟战神Z7M', '5499.00', '战神Z7M【四核i7 GTX965M】', 'Windows 10', '8G', '全高清屏(1920×1080)', 'GTX965M', 'Intel i7标准电压版', '4G', '游戏本', '128G+1T', '152123456789', '1289', null, '1', null);
-INSERT INTO `wh_product` VALUES ('40', '10', '神舟战神Z7M-SL5D1', '4499.00', '战神Z7M【四核i5 GTX965M】', 'Windows 10', '8G', '全高清屏(1920×1080)', 'GTX965M', 'Intel i7标准电压版', '2G', '游戏本', '1T', '153123456789', '231', null, '0', null);
 
 -- ----------------------------
 -- Table structure for `wh_product_family`
