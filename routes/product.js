@@ -4,6 +4,13 @@ const router= express.Router();
 
 // 商品页面接口
 router.get("/v1/allProduct",(req,res)=>{
+  //判断用户是否已经登录
+  let uid = req.session.uid;
+  if(!uid){
+    res.send({code:-1,mgs:"请先登录"})
+    return;
+  }
+  //如果已经登录则正常继续操作
   let output={
     count:0,
     pageSize:30,
@@ -26,6 +33,12 @@ router.get("/v1/allProduct",(req,res)=>{
 });
 
 router.post("/v1/updata",(req,res)=>{
+  //判断用户是否已经登录
+  let uid = req.session.uid;
+  if(!uid){
+    res.send({code:-1,mgs:"请先登录"})
+    return;
+  }
   let $propName = req.body.params.propName;
   let $value = req.body.params.value;
   let $pid=req.body.params.pid;
@@ -40,6 +53,12 @@ router.post("/v1/updata",(req,res)=>{
  })
 
 router.delete("/v1/deldata",(req,res)=>{
+  //判断用户是否已经登录
+  let uid = req.session.uid;
+  if(!uid){
+    res.send({code:-1,mgs:"请先登录"})
+    return;
+  }
   let $pid=req.query.pid;
   let sql="DELETE FROM wh_product WHERE pid = ?;";
   query(sql,[$pid]).then(result=>{
@@ -52,6 +71,12 @@ router.delete("/v1/deldata",(req,res)=>{
 })
 
 router.get("/",(req,res)=>{
+  //判断用户是否已经登录
+  let uid = req.session.uid;
+  if(!uid){
+    res.send({code:-1,mgs:"请先登录"})
+    return;
+  }
   let output={
     count:0,
     pageSize:9,
@@ -94,6 +119,12 @@ router.get("/",(req,res)=>{
 })
 
 router.get("/v1/shelp",(req,res)=>{
+  //判断用户是否已经登录
+  let uid = req.session.uid;
+  if(!uid){
+    res.send({code:-1,mgs:"请先登录"})
+    return;
+  }
   let kw=req.query.kw;
   let kws=kw.split(" ");
   kws.forEach((elem,i,arr)=>{
@@ -109,6 +140,12 @@ router.get("/v1/shelp",(req,res)=>{
 
 // 库存页面接口
 router.get("/v1/repertory",(req,res)=>{
+  //判断用户是否已经登录
+  let uid = req.session.uid;
+  if(!uid){
+    res.send({code:-1,mgs:"请先登录"})
+    return;
+  }
   let output={
     count:0,
     pageSize:30,

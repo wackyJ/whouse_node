@@ -3,7 +3,8 @@ const cors = require('cors');
 const createError = require('http-errors');
 const express = require('express');
 // 用于处理文件与目录的路径
-const path = require('path');
+// const path = require('path');
+
 const cookieParser = require('cookie-parser');
 // 用来记录日志的中间件
 const logger = require('morgan');
@@ -19,19 +20,21 @@ var settingRouter = require('./routes/setting');
 // var bodyParser =  require('body-parser');
 
 var app = express();
-
-app.use(cors());
+app.use(cors({
+  origin:["http://127.0.0.1:8080","http://localhost:8080","http://localhost:8081"],
+  credentials:true
+}));
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 // 配置session
-server.use(session({
+app.use(session({
   secret:"whouse",//加密字符串，随意内容但定义以后不要修改
   resave:true,  //重复保存
   saveUninitialized:true //保存初始化数据
 }))
-// app.use(express.static(patresh.join(__dirname, 'public')));
+app.use(express.static( 'public' ));
 
 // view engine setup
 // 修改为使用后缀为.html的模板文件

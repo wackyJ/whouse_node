@@ -3,6 +3,12 @@ const query = require("./query");
 const router = express.Router();
 
 router.post("/v1/OrderSubmission",(req,res)=>{
+  //判断用户是否已经登录
+  let uid = req.session.uid;
+  if(!uid){
+    res.send({code:-1,mgs:"请先登录"})
+    return;
+  }
   res.send("success");
   /*var $orderForm = req.body.params.orderForm;
   // var $orderProduct = $orderForm.orderProduct;
@@ -26,6 +32,12 @@ router.post("/v1/OrderSubmission",(req,res)=>{
 });
 
 router.get("/v1/OrderSearch",(req,res)=>{
+  //判断用户是否已经登录
+  let uid = req.session.uid;
+  if(!uid){
+    res.send({code:-1,mgs:"请先登录"})
+    return;
+  }
 
 })
 

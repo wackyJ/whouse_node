@@ -26,27 +26,28 @@ router.post('/v1/register',(req,res)=>{
 
 //2.添加用户登录路由
 router.post("/v1/login",(req, res)=>{
-      pool.query("select uid,uname,upwd,token_id from wh_user where uname=? and upwd=?",[req.body.uname,req.body.upwd],(err,result)=>{
-        if(err)throw err;
-        if(result.length>0){
-          //  将用户id保存session对象中
-          req.session.uid=result[0].uid;// uid当前登录：用户凭证
-          //生成token信息
-          let content ={name:req.body.name}; // 要生成token的主题信息
-          let secretOrPrivateKey="suiyi" // 这是加密的key（密钥） 
-          let status = jwt.sign(content, secretOrPrivateKey, {
-                  expiresIn: 60*60*1  // 1小时过期
-          });
-           // 将status存入数据库
-           pool.query("insert into wh_user set status=?",status,(err,result1)=>{
-            if(err)throw err;
-            if(result1.affectedRows>0){
-              // 返回给前端用户权限id，以及登录状态status
-              res.send({code:200,msg:"login successfully",token_id:result.token_id,status:status})
-            }
-          })
-        }
-      })
+    pool.query("select uid,uname,upwd,token_id from wh_user where uname=? and upwd=?",[req.body.params.uname,req.body.params.upwd],(err,result)=>{
+      if(err)throw err;
+      if(result.length>0){
+        //  将用户id保存session对象中
+        req.session.uid=result[0].uid;// uid当前登录：用户凭证
+        // console.log(req.session.uid);
+        //生成token信息
+        let content ={name:req.body.name}; // 要生成token的主题信息
+        let secretOrPrivateKey="suiyi" // 这是加密的key（密钥） 
+        let status = jwt.sign(content, secretOrPrivateKey, {
+                expiresIn: 60*60*1  // 1小时过期
+        });
+          // 将status存入数据库
+          pool.query("insert into wh_user set status=?",status,(err,result1)=>{
+          if(err)throw err;
+          if(result1.affectedRows>0){
+            // 返回给前端用户权限id，以及登录状态status
+            res.send({code:200,msg:"login successfully",token_id:result.token_id,status:status})
+          }
+        })
+      }
+    })
   })
 
 //3.检测用户登录是否过期
