@@ -26,9 +26,12 @@ router.post('/v1/register',(req,res)=>{
 
 //2.添加用户登录路由
 router.post("/v1/login",(req, res)=>{
-      pool.query("select uname,upwd,token_id from wh_user where uname=? and upwd=?",[req.body.uname,req.body.upwd],(err,result)=>{
+      pool.query("select uid,uname,upwd,token_id from wh_user where uname=? and upwd=?",[req.body.uname,req.body.upwd],(err,result)=>{
         if(err)throw err;
         if(result.length>0){
+          //  将用户id保存session对象中
+          req.session.uid=result[0].uid;// uid当前登录：用户凭证
+          //生成token信息
           let content ={name:req.body.name}; // 要生成token的主题信息
           let secretOrPrivateKey="suiyi" // 这是加密的key（密钥） 
           let status = jwt.sign(content, secretOrPrivateKey, {

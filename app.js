@@ -1,12 +1,14 @@
 const jwt = require('jsonwebtoken');
 const cors = require('cors');
-var createError = require('http-errors');
-var express = require('express');
+const createError = require('http-errors');
+const express = require('express');
 // 用于处理文件与目录的路径
-var path = require('path');
-var cookieParser = require('cookie-parser');
+const path = require('path');
+const cookieParser = require('cookie-parser');
 // 用来记录日志的中间件
-var logger = require('morgan');
+const logger = require('morgan');
+//引入session模块，用来记录用户的登录状态
+const session = require('express-session')
 //引入路由器
 // var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -18,6 +20,19 @@ var settingRouter = require('./routes/setting');
 
 var app = express();
 
+app.use(cors());
+app.use(logger('dev'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
+// 配置session
+server.use(session({
+  secret:"whouse",//加密字符串，随意内容但定义以后不要修改
+  resave:true,  //重复保存
+  saveUninitialized:true //保存初始化数据
+}))
+// app.use(express.static(patresh.join(__dirname, 'public')));
+
 // view engine setup
 // 修改为使用后缀为.html的模板文件
 /*var ejs=require('ejs');
@@ -25,13 +40,6 @@ app.set('views', path.join(__dirname, 'views'));
 app.engine('html',ejs.__express);
 app.set('view engine', 'html');*/
 
-app.use(cors());
-app.use(logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
-// app.use(express.static(patresh.join(__dirname, 'public')));
-// app.use(bodyParser.urlencoded({extended:false}));
 //使用路由器，并挂载到相应路径下
 // app.use('/', indexRouter);
 app.use('/users', usersRouter);
