@@ -1,7 +1,7 @@
 const express = require("express");
 const query = require("./query");
 const router = express.Router();
-
+//订单提交
 router.post("/v1/OrderSubmission",(req,res)=>{
   //判断用户是否已经登录
   let uid = req.session.uid;
@@ -36,7 +36,7 @@ router.post("/v1/OrderSubmission",(req,res)=>{
     res.send({code:200,msg:"success"});
   })
 });
-
+//订单查询
 router.get("/v1/OrderSearch",(req,res)=>{
   //判断用户是否已经登录
   let uid = req.session.uid;
@@ -46,7 +46,18 @@ router.get("/v1/OrderSearch",(req,res)=>{
   }
 
 })
-
+//订单商品单价显示
+router.get("/v1/unitPrice",(req,res)=>{
+  let $pid=req.query.pid;
+  let sql="SELECT sell_price FROM wh_product WHERE pid=?";
+  query(sql,[$pid]).then(result=>{
+    if(result.length>0){
+      res.send({code:200,msg:"Unit price indicates success",data:result});
+    }else{
+      res.send({code:201,msg:"The target product does not exist"})
+    }
+  })
+})
 
 
 module.exports = router;
