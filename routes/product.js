@@ -56,7 +56,7 @@ router.delete("/v1/deldata",(req,res)=>{
   //判断用户是否已经登录
   let uid = req.session.uid;
   if(!uid){
-    res.send({code:-1,mgs:"请先登录"})
+    res.send({code:-1,msg:"请先登录"})
     return;
   }
   let $pid=req.query.pid;
