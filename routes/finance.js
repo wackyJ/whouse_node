@@ -13,7 +13,7 @@ router.get("/v1/weeklySales",(req,res)=>{
         if(err){
             res.send({code:201,msg:`${err}`})
         }else{
-            res.send(result);
+            res.send({code:200,msg:"According to successful",data:result});
         }
     });
 });
@@ -29,7 +29,7 @@ router.get("/v1/monthlySales",(req,res)=>{
         if(err){
             res.send({code:201,msg:`${err}`})
         }else{
-            res.send(result);
+            res.send({code:200,msg:"According to successful",data:result});
         }
     });
 });
@@ -45,7 +45,7 @@ router.get("/v1/yearlySales",(req,res)=>{
         if(err){
             res.send({code:201,msg:`${err}`})
         }else{
-            res.send(result);
+            res.send({code:200,msg:"According to successful",data:result});
         }
     });
 });
