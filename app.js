@@ -1,4 +1,3 @@
-// const jwt = require('jsonwebtoken');
 const cors = require('cors');
 const createError = require('http-errors');
 const express = require('express');
@@ -33,7 +32,7 @@ app.use(session({
   secret:"whouse",//加密字符串，随意内容但定义以后不要修改
   resave:true,  //重复保存
   saveUninitialized:true, //保存初始化数据
-  cookie: { maxAge: 30*60*1000 }
+  cookie: { maxAge: 1*60*1000 }
 }))
 app.use(express.static( 'public' ));
 
@@ -45,7 +44,6 @@ app.engine('html',ejs.__express);
 app.set('view engine', 'html');*/
 
 //使用路由器，并挂载到相应路径下
-// app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/finance', financeRouter);
 app.use('/product',productRouter);

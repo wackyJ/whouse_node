@@ -10,6 +10,7 @@ router.get("/v1/allProduct",(req,res)=>{
     res.send({code:-1,mgs:"请先登录"})
     return;
   }
+  req.session.cookie.maxAge=req.session.cookie.originalMaxAge;
   //如果已经登录则正常继续操作
   let output={
     count:0,
@@ -39,6 +40,7 @@ router.post("/v1/updata",(req,res)=>{
     res.send({code:-1,mgs:"请先登录"})
     return;
   }
+  req.session.cookie.maxAge=req.session.cookie.originalMaxAge;
   let $propName = req.body.params.propName;
   let $value = req.body.params.value;
   let $pid=req.body.params.pid;
@@ -59,6 +61,7 @@ router.delete("/v1/deldata",(req,res)=>{
     res.send({code:-1,msg:"请先登录"})
     return;
   }
+  req.session.cookie.maxAge=req.session.cookie.originalMaxAge;
   let $pid=req.query.pid;
   let sql="DELETE FROM wh_product WHERE pid = ?;";
   query(sql,[$pid]).then(result=>{
@@ -77,6 +80,7 @@ router.get("/",(req,res)=>{
     res.send({code:-1,mgs:"请先登录"})
     return;
   }
+  req.session.cookie.maxAge=req.session.cookie.originalMaxAge;
   let output={
     count:0,
     pageSize:9,
@@ -125,6 +129,7 @@ router.get("/v1/shelp",(req,res)=>{
     res.send({code:-1,mgs:"请先登录"})
     return;
   }
+  req.session.cookie.maxAge=req.session.cookie.originalMaxAge;
   let kw=req.query.kw;
   let kws=kw.split(" ");
   kws.forEach((elem,i,arr)=>{
@@ -146,6 +151,7 @@ router.get("/v1/repertory",(req,res)=>{
     res.send({code:-1,mgs:"请先登录"})
     return;
   }
+  req.session.cookie.maxAge=req.session.cookie.originalMaxAge;
   let output={
     count:0,
     pageSize:30,

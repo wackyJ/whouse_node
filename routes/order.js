@@ -9,7 +9,7 @@ router.post("/v1/OrderSubmission",(req,res)=>{
     res.send({code:-1,msg:"请先登录"})
     return;
   }
-  // res.send({code:200,msg:"success"});
+  req.session.cookie.maxAge=req.session.cookie.originalMaxAge;
   let $orderForm = req.body.params.orderForm;
   let $orderDetail = req.body.params.orderDetail;
   $orderDetail=$orderDetail.map(obj=>{
@@ -44,7 +44,7 @@ router.get("/v1/OrderSearch",(req,res)=>{
     res.send({code:-1,mgs:"请先登录"})
     return;
   }
-
+  req.session.cookie.maxAge=req.session.cookie.originalMaxAge;
 })
 //订单商品单价显示
 router.get("/v1/unitPrice",(req,res)=>{
