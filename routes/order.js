@@ -44,7 +44,6 @@ router.get("/v1/OrderSearch",(req,res)=>{
     res.send({code:-1,mgs:"请先登录"})
     return;
   }
-  req.session.cookie.maxAge=req.session.cookie.originalMaxAge;
 })
 //订单商品单价显示
 router.get("/v1/unitPrice",(req,res)=>{

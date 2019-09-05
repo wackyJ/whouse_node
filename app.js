@@ -32,7 +32,7 @@ app.use(session({
   secret:"whouse",//加密字符串，随意内容但定义以后不要修改
   resave:true,  //重复保存
   saveUninitialized:true, //保存初始化数据
-  cookie: { maxAge: 1*60*1000 }
+  // cookie: { maxAge: 30*60*1000 }
 }))
 app.use(express.static( 'public' ));
 
