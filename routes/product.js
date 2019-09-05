@@ -70,7 +70,7 @@ router.delete("/v1/deldata",(req,res)=>{
   })
 })
 
-router.get("/",(req,res)=>{
+router.get("/v1/search",(req,res)=>{
   //判断用户是否已经登录
   let uid = req.session.uid;
   if(!uid){
@@ -100,7 +100,8 @@ router.get("/",(req,res)=>{
     //join(" and ");
     let where=kws.join(" and ");
     //"pname like '%mac%' and pname like '%i5%' and pname like '%128g%'"
-    let sql=`select *,(select md from wh_product_pic where product_id=pid limit 1) as md from wh_product where ${where}`;
+    // let sql=`select *,(select md from wh_product_pic where product_id=pid limit 1) as md from wh_product where ${where}`;
+    let sql=`select * from wh_product where pname like '%${kw}%' `;
     query(sql,[])
     .then(result=>{
       output.count=result.length;
