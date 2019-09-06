@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2019-09-01 21:20:48
+Date: 2019-09-06 19:29:48
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -132,45 +132,45 @@ CREATE TABLE `wh_product` (
 -- ----------------------------
 -- Records of wh_product
 -- ----------------------------
-INSERT INTO `wh_product` VALUES ('1', '1', 'AppleMacBook Air', '69881.00', '双核i5/8GB内存/128GB闪存', 'MacOS', '8G', '1920*1080', '集成显卡', 'Intel i5低功耗版', '其它', '轻薄本', '128G固态', '150123456789', '2968', null, '1', '1');
-INSERT INTO `wh_product` VALUES ('2', '1', 'AppleMacBook Air', '8268.00', '双核i5/8GB内存/256GB闪存', 'MacOS', '8G', '1920*1080', '集成显卡', 'Intel i5低功耗版', '其它', '轻薄本', '256G固态', '150223456789', '1922', null, '0', null);
-INSERT INTO `wh_product` VALUES ('3', '1', 'AppleMacBook Air', '7488.00', '定制款：双核i7/8G内存/128G闪存', 'MacOS', '8G', '1920*1080', '集成显卡', 'Intel i7低功耗版', '其它', '轻薄本', '128G固态', '150323456789', '733', null, '0', null);
-INSERT INTO `wh_product` VALUES ('4', '1', 'AppleMacBook Air', '7888.00', '定制款：双核i7/8G内存/256G闪存', 'MacOS', '8G', '1920*1080', '集成显卡', 'Intel i7低功耗版', '其它', '轻薄本', '256G固态', '150323456789', '105', null, '0', null);
-INSERT INTO `wh_product` VALUES ('5', '2', '小米Air', '4999.00', '【13.3英寸】I5-6200U 8G 256G', 'Windows 10', '8G', '全高清屏(1920*1080)', '入门级游戏独立显卡', 'Intel i5低功耗版', '1G', '轻薄本', '256G固态', '154123456789', '1527', null, '1', null);
-INSERT INTO `wh_product` VALUES ('6', '2', '小米Air', '3599.00', '【12.5银色】 M-7Y30 4G 128G', 'Windows 10', '4G', '全高清屏(1920*1080)', '集成显卡', 'Intel CoreM', '其它', '轻薄本', '128G固态', '153123456789', '115', null, '0', null);
-INSERT INTO `wh_product` VALUES ('7', '2', '小米Air', '3599.00', '【12.5金色】 M-7Y30 4G 128G', 'Windows 10', '4G', '全高清屏(1920*1080)', '集成显卡', 'Intel CoreM', '其它', '轻薄本', '128G固态', '156123456789', '812', null, '1', null);
-INSERT INTO `wh_product` VALUES ('8', '2', '小米Air', '3499.00', '【12.5英寸】M-6Y30 4G 128G', 'Windows 10', '4G', '全高清屏(1920*1080)', '集成显卡', 'Intel CoreM', '其它', '轻薄本', '128G固态', '157123456789', '1081', null, '0', null);
-INSERT INTO `wh_product` VALUES ('9', '3', 'ThinkPadE480c', '3499.00', '【E480C-2017新】i3 4G 500G独显', 'Windows10', '4G', '标准屏(1366×768)', '入门级游戏独立显卡', 'Intel i3', '2G', '常规笔记本', '500G', '150423456789', '1461', null, '1', null);
-INSERT INTO `wh_product` VALUES ('10', '3', 'ThinkPadE480c', '4499.00', '【E480C-2017新】i5 4G 500G', 'Windows10', '4G', '标准屏(1366×768)', '入门级游戏独立显卡', 'Intel i5低功耗版', '2G', '常规笔记本', '500G', '151423456789', '733', null, '0', null);
-INSERT INTO `wh_product` VALUES ('11', '3', 'ThinkPadE480c', '5399.00', '【E480C-2017新】i5 4G 256GSSD', 'Windows10', '4G', '标准屏(1366×768)', '入门级游戏独立显卡', 'Intel i5低功耗版', '2G', '常规笔记本', '256G固态', '152423456789', '913', null, '1', null);
-INSERT INTO `wh_product` VALUES ('12', '3', 'ThinkPadE480c', '5999.00', '【E480C-2017新】i5 8G 256GSSD', 'Windows10', '8G', '标准屏(1366×768)', '入门级游戏独立显卡', 'Intel i5低功耗版', '2G', '常规笔记本', '256G固态', '153423456789', '112', null, '0', null);
-INSERT INTO `wh_product` VALUES ('13', '4', '华硕(ASUS)13.3英寸RX310UQ金属超极本 学生 商务', '4299.00', '13.3英寸I3-7100U/4G/128G固态', 'Windows 10', '8G', '全高清屏(1920×1080)', '高性能游戏独立显卡', 'Intel i5低功耗版', '2G', '轻薄本', '128G固态', '151123456789', '1197', null, '1', null);
-INSERT INTO `wh_product` VALUES ('14', '4', '华硕(ASUS)13.3英寸RX310UQ金属超极本 学生 商务', '4999.00', '13.3英寸I5/4G/128G固态', 'Windows 10', '8G', '全高清屏(1920×1080)', '高性能游戏独立显卡', 'Intel i5低功耗版', '2G', '轻薄本', '128G固态', '152123456789', '137', null, '0', null);
-INSERT INTO `wh_product` VALUES ('15', '4', '华硕(ASUS)13.3英寸RX310UQ金属超极本 学生 商务', '5499.00', '13.3英寸I5/4G/256G/2G独显', 'Windows 10', '4G', '全高清屏(1920×1080)', '高性能游戏独立显卡', 'Intel i5低功耗版', '2G', '轻薄本', '128G固态', '153123456789', '21', null, '0', null);
-INSERT INTO `wh_product` VALUES ('16', '4', '华硕(ASUS)13.3英寸RX310UQ金属超极本 学生 商务', '5699.00', '13.3英寸I5/8G/256G/2G独显', 'Windows 10', '8G', '全高清屏(1920×1080)', '高性能游戏独立显卡', 'Intel i5低功耗版', '2G', '轻薄本', '128G固态', '152423456789', '981', null, '0', null);
-INSERT INTO `wh_product` VALUES ('17', '5', '联想小新700', '5199.00', '小新700【i5 双硬盘 GTX950M】', 'Windows 10', '8G', '分辨率：全高清屏(1920×1080)', 'GTX950M', 'Intel i5标准电压版', '4G', '游戏本', '128G+500G', '149123456789', '192', null, '1', null);
-INSERT INTO `wh_product` VALUES ('18', '5', '联想小新700', '5499.00', '小新700【i7 8G 500G GTX950M】', 'Windows 10', '8G', '分辨率：全高清屏(1920×1080)', 'GTX950M', 'Intel i7标准电压版', '4G', '游戏本', '128G+500G', '151523456789', '260', null, '0', null);
-INSERT INTO `wh_product` VALUES ('19', '6', '戴尔燃7000', '5299.00', '【流光银】i5-7200u 4G 128 500G', 'Windows 10', '4G', '全高清屏(1920×1080)', '入门级游戏独立显卡', 'Intel i5低功耗版', '2G', '轻薄本', '128G+500G', '151923456789', '911', null, '0', null);
-INSERT INTO `wh_product` VALUES ('20', '6', '戴尔燃7000', '6599.00', '【溢彩金】i7-7500u 8G 128 1T', 'Windows 10', '8G', '全高清屏(1920×1080)', '入门级游戏独立显卡', 'Intel i7低功耗版', '2G', '轻薄本', '128G+500G', '150823456789', '1930', null, '1', null);
-INSERT INTO `wh_product` VALUES ('21', '6', '戴尔燃7000', '5299.00', '【元気粉】i5-7200u 4G 128 500G', 'Windows 10', '4G', '全高清屏(1920×1080)', '入门级游戏独立显卡', 'Intel i5低功耗版', '2G', '轻薄本', '128G+500G', '151023456789', '987', null, '1', null);
-INSERT INTO `wh_product` VALUES ('22', '7', '戴尔灵越游匣15PR-5745B', '6999.00', '宗师版 i7-7700HQ 8G GTX1050 4G', 'Windows 10', '8G', '全高清屏(1920×1080)', 'GTX960M', 'Intel i7标准电压版', '4G', '游戏本', '128G+1T', '148123456789', '1901', null, '1', null);
-INSERT INTO `wh_product` VALUES ('23', '7', '戴尔灵越游匣15PR-5645SE', '6699.00', '枪弹版 i5-7300HQ 8G GTX1050 4G', 'Windows 10', '8G', '全高清屏(1920×1080)', 'GTX960M', 'Intel i5标准电压版', '4G', '游戏本', '128G+1T', '153123456789', '1231', null, '0', null);
-INSERT INTO `wh_product` VALUES ('24', '7', '戴尔灵越游匣15PR-5645SE', '7999.00', '枪弹版 i7-7700HQ 8G GTX1050 4G', 'Windows 10', '8G', '全高清屏(1920×1080)', 'GTX960M', 'Intel i7标准电压版', '4G', '游戏本', '128G+1T', '1539923456789', '221', null, '0', null);
-INSERT INTO `wh_product` VALUES ('25', '7', '戴尔游匣', '6099.00', '精锐版 i7-6700HQ 4G GTX960 4G', 'Windows 10', '4G', '全高清屏(1920×1080)', 'GTX960M', 'Intel i7标准电压版', '4G', '游戏本', '128G+1T', '1519123456789', '711', null, '1', null);
-INSERT INTO `wh_product` VALUES ('26', '7', '戴尔游匣', '5299.00', '精锐版 i5-6300HQ 4G GTX960 4G', 'Windows 10', '4G', '全高清屏(1920×1080)', 'GTX960M', 'Intel i5标准电压版', '4G', '游戏本', '128G+1T', '1529123456789', '319', null, '0', null);
-INSERT INTO `wh_product` VALUES ('27', '7', '戴尔灵越游匣15PR-5645B', '5999.00', '宗师版 i5-7300HQ 8G GTX1050 4G', 'Windows 10', '8G', '全高清屏(1920×1080)', 'GTX1050', 'Intel i7标准电压版', '4G', '游戏本', '128G+1T', '1511123456789', '2110', null, '0', null);
-INSERT INTO `wh_product` VALUES ('28', '8', 'ThinkPadE470 c', '3998.00', '【E470C-2017新】i5 4G 500G', 'Linux', '4G', '标准屏(1366×768)', '入门级游戏独立显卡', 'Intel i5低功耗版', '2G', '常规本', '500G', '150123456789', '117', null, '1', null);
-INSERT INTO `wh_product` VALUES ('29', '8', 'ThinkPadE470 c', '4699.00', '【E470C-2017新】i5 8G 500G', 'Linux', '8G', '标准屏(1366×768)', '入门级游戏独立显卡', 'Intel i5低功耗版', '2G', '常规本', '500G', '151123456789', '1862', null, '0', null);
-INSERT INTO `wh_product` VALUES ('30', '8', 'ThinkPadE470 c', '5499.00', '【E470C-2017新】i5 8G 1TB', 'Linux', '8G', '标准屏(1366×768)', '入门级游戏独立显卡', 'Intel i5低功耗版', '2G', '常规本', '1T', '152123456789', '812', null, '1', null);
-INSERT INTO `wh_product` VALUES ('31', '8', 'ThinkPadE470 c', '5399.00', '【E470C-2017新】i5 4G 256GSSD', 'Linux', '4G', '标准屏(1366×768)', '入门级游戏独立显卡', 'Intel i5低功耗版', '2G', '常规本', '256G固态', '153123456789', '162', null, '0', null);
-INSERT INTO `wh_product` VALUES ('32', '8', 'ThinkPadE470 c', '5499.00', '【E470C-2017新】i5 8G 256GSSD', 'Linux', '8G', '标准屏(1366×768)', '入门级游戏独立显卡', 'Intel i5低功耗版', '2G', '常规本', '256G固态', '154123456789', '1180', null, '0', null);
-INSERT INTO `wh_product` VALUES ('33', '9', '华硕FH5900V', '4999.00', '【高速】顽石游戏本i74G1T128SSD', 'Windows 10', '4G', '全高清屏(1920*1080)', '入门级游戏独立显卡', 'Intel i7标准电压版', '2G', '游戏本', '128G+1T', '1450123456789', '1231', null, '0', null);
-INSERT INTO `wh_product` VALUES ('34', '9', '华硕FL5900UQ', '4699.00', '顽石经典【高配i7 8G 1T 深蓝】', 'Windows 10', '8G', '全高清屏(1920*1080)', '入门级游戏独立显卡', 'Intel i7低功耗版', '2G', '游戏本', '1T', '1550123456789', '1231', null, '1', null);
-INSERT INTO `wh_product` VALUES ('35', '9', '华硕FL5900UQ', '4999.00', '顽石双盘【i7 4G 1t加128SSD】', 'Windows 10', '4G', '全高清屏(1920*1080)', '入门级游戏独立显卡', 'Intel i7低功耗版', '2G', '游戏本', '128G+1T', '1531023456789', '221', null, '0', null);
-INSERT INTO `wh_product` VALUES ('36', '9', '华硕FL5900U', '4799.00', '顽石高速【i7-4G 512SSD 炫红】', 'Windows 10', '4G', '全高清屏(1920*1080)', 'GT940M', 'Intel i7低功耗版', '2G', '游戏本', '512G固态', '1510123456789', '103', null, '1', null);
-INSERT INTO `wh_product` VALUES ('37', '9', '华硕FL5900UQ', '4799.00', '顽石高速【i74G512SSD NV940MX】', 'Windows 10', '4G', '全高清屏(1920*1080)', '入门级游戏独立显卡', 'Intel i7低功耗版', '2G', '游戏本', '512G固态', '1450123456789', '341', null, '0', null);
-INSERT INTO `wh_product` VALUES ('38', '10', '神舟战神Z7M-KP7GT', '6199.00', 'Z7M GT【i7 128G+1T GTX1050Ti】', 'Windows 10', '8G', '全高清屏(1920×1080)', 'GTX1050Ti', 'Intel i7标准电压版', '4G', '游戏本', '128G+1T', '151123456789', '441', null, '0', null);
-INSERT INTO `wh_product` VALUES ('39', '10', '神舟战神Z7M', '5499.00', '战神Z7M【四核i7 GTX965M】', 'Windows 10', '8G', '全高清屏(1920×1080)', 'GTX965M', 'Intel i7标准电压版', '4G', '游戏本', '128G+1T', '152123456789', '1289', null, '1', null);
+INSERT INTO `wh_product` VALUES ('1', '1', 'AppleMacBook Air', '6988.00', '双核i5/8GB内存/128GB闪存', 'MacOS', '8G', '1920*1080', '集成显卡', 'Intel i5低功耗版', '其它', '轻薄本', '128G固态', '150123456789', '2968', '432', '1', '1');
+INSERT INTO `wh_product` VALUES ('2', '1', 'AppleMacBook Air', '8268.00', '双核i5/8GB内存/256GB闪存', 'MacOS', '8G', '1920*1080', '集成显卡', 'Intel i5低功耗版', '其它', '轻薄本', '256G固态', '150223456789', '1922', '378', '0', '3');
+INSERT INTO `wh_product` VALUES ('3', '1', 'AppleMacBook Air', '7488.00', '定制款：双核i7/8G内存/128G闪存', 'MacOS', '8G', '1920*1080', '集成显卡', 'Intel i7低功耗版', '其它', '轻薄本', '128G固态', '150323456789', '733', '267', '0', '2');
+INSERT INTO `wh_product` VALUES ('4', '1', 'AppleMacBook Air', '7888.00', '定制款：双核i7/8G内存/256G闪存', 'MacOS', '8G', '1920*1080', '集成显卡', 'Intel i7低功耗版', '其它', '轻薄本', '256G固态', '150323456789', '105', '295', '0', '4');
+INSERT INTO `wh_product` VALUES ('5', '2', '小米Air', '4999.00', '【13.3英寸】I5-6200U 8G 256G', 'Windows 10', '8G', '全高清屏(1920*1080)', '入门级游戏独立显卡', 'Intel i5低功耗版', '1G', '轻薄本', '256G固态', '154123456789', '1527', '473', '1', '2');
+INSERT INTO `wh_product` VALUES ('6', '2', '小米Air', '3599.00', '【12.5银色】 M-7Y30 4G 128G', 'Windows 10', '4G', '全高清屏(1920*1080)', '集成显卡', 'Intel CoreM', '其它', '轻薄本', '128G固态', '153123456789', '115', '185', '0', '1');
+INSERT INTO `wh_product` VALUES ('7', '2', '小米Air', '3599.00', '【12.5金色】 M-7Y30 4G 128G', 'Windows 10', '4G', '全高清屏(1920*1080)', '集成显卡', 'Intel CoreM', '其它', '轻薄本', '128G固态', '156123456789', '812', '188', '1', null);
+INSERT INTO `wh_product` VALUES ('8', '2', '小米Air', '3499.00', '【12.5英寸】M-6Y30 4G 128G', 'Windows 10', '4G', '全高清屏(1920*1080)', '集成显卡', 'Intel CoreM', '其它', '轻薄本', '128G固态', '157123456789', '1081', '119', '0', null);
+INSERT INTO `wh_product` VALUES ('9', '3', 'ThinkPadE480c', '3499.00', '【E480C-2017新】i3 4G 500G独显', 'Windows10', '4G', '标准屏(1366×768)', '入门级游戏独立显卡', 'Intel i3', '2G', '常规笔记本', '500G', '150423456789', '1461', '39', '1', null);
+INSERT INTO `wh_product` VALUES ('10', '3', 'ThinkPadE480c', '4499.00', '【E480C-2017新】i5 4G 500G', 'Windows10', '4G', '标准屏(1366×768)', '入门级游戏独立显卡', 'Intel i5低功耗版', '2G', '常规笔记本', '500G', '151423456789', '733', '267', '0', null);
+INSERT INTO `wh_product` VALUES ('11', '3', 'ThinkPadE480c', '5399.00', '【E480C-2017新】i5 4G 256GSSD', 'Windows10', '4G', '标准屏(1366×768)', '入门级游戏独立显卡', 'Intel i5低功耗版', '2G', '常规笔记本', '256G固态', '152423456789', '913', '87', '1', null);
+INSERT INTO `wh_product` VALUES ('12', '3', 'ThinkPadE480c', '5999.00', '【E480C-2017新】i5 8G 256GSSD', 'Windows10', '8G', '标准屏(1366×768)', '入门级游戏独立显卡', 'Intel i5低功耗版', '2G', '常规笔记本', '256G固态', '153423456789', '112', '188', '0', null);
+INSERT INTO `wh_product` VALUES ('13', '4', '华硕(ASUS)13.3英寸RX310UQ金属超极本 学生 商务', '4299.00', '13.3英寸I3-7100U/4G/128G固态', 'Windows 10', '8G', '全高清屏(1920×1080)', '高性能游戏独立显卡', 'Intel i5低功耗版', '2G', '轻薄本', '128G固态', '151123456789', '1197', '303', '1', null);
+INSERT INTO `wh_product` VALUES ('14', '4', '华硕(ASUS)13.3英寸RX310UQ金属超极本 学生 商务', '4999.00', '13.3英寸I5/4G/128G固态', 'Windows 10', '8G', '全高清屏(1920×1080)', '高性能游戏独立显卡', 'Intel i5低功耗版', '2G', '轻薄本', '128G固态', '152123456789', '137', '63', '0', null);
+INSERT INTO `wh_product` VALUES ('15', '4', '华硕(ASUS)13.3英寸RX310UQ金属超极本 学生 商务', '5499.00', '13.3英寸I5/4G/256G/2G独显', 'Windows 10', '4G', '全高清屏(1920×1080)', '高性能游戏独立显卡', 'Intel i5低功耗版', '2G', '轻薄本', '128G固态', '153123456789', '21', '79', '0', null);
+INSERT INTO `wh_product` VALUES ('16', '4', '华硕(ASUS)13.3英寸RX310UQ金属超极本 学生 商务', '5699.00', '13.3英寸I5/8G/256G/2G独显', 'Windows 10', '8G', '全高清屏(1920×1080)', '高性能游戏独立显卡', 'Intel i5低功耗版', '2G', '轻薄本', '128G固态', '152423456789', '981', '19', '0', null);
+INSERT INTO `wh_product` VALUES ('17', '5', '联想小新700', '5199.00', '小新700【i5 双硬盘 GTX950M】', 'Windows 10', '8G', '分辨率：全高清屏(1920×1080)', 'GTX950M', 'Intel i5标准电压版', '4G', '游戏本', '128G+500G', '149123456789', '192', '108', '1', null);
+INSERT INTO `wh_product` VALUES ('18', '5', '联想小新700', '5499.00', '小新700【i7 8G 500G GTX950M】', 'Windows 10', '8G', '分辨率：全高清屏(1920×1080)', 'GTX950M', 'Intel i7标准电压版', '4G', '游戏本', '128G+500G', '151523456789', '260', '140', '0', null);
+INSERT INTO `wh_product` VALUES ('19', '6', '戴尔燃7000', '5299.00', '【流光银】i5-7200u 4G 128 500G', 'Windows 10', '4G', '全高清屏(1920×1080)', '入门级游戏独立显卡', 'Intel i5低功耗版', '2G', '轻薄本', '128G+500G', '151923456789', '911', '189', '0', null);
+INSERT INTO `wh_product` VALUES ('20', '6', '戴尔燃7000', '6599.00', '【溢彩金】i7-7500u 8G 128 1T', 'Windows 10', '8G', '全高清屏(1920×1080)', '入门级游戏独立显卡', 'Intel i7低功耗版', '2G', '轻薄本', '128G+500G', '150823456789', '1930', '270', '1', null);
+INSERT INTO `wh_product` VALUES ('21', '6', '戴尔燃7000', '5299.00', '【元気粉】i5-7200u 4G 128 500G', 'Windows 10', '4G', '全高清屏(1920×1080)', '入门级游戏独立显卡', 'Intel i5低功耗版', '2G', '轻薄本', '128G+500G', '151023456789', '987', '313', '1', null);
+INSERT INTO `wh_product` VALUES ('22', '7', '戴尔灵越游匣15PR-5745B', '6999.00', '宗师版 i7-7700HQ 8G GTX1050 4G', 'Windows 10', '8G', '全高清屏(1920×1080)', 'GTX960M', 'Intel i7标准电压版', '4G', '游戏本', '128G+1T', '148123456789', '1901', '199', '1', null);
+INSERT INTO `wh_product` VALUES ('23', '7', '戴尔灵越游匣15PR-5645SE', '6699.00', '枪弹版 i5-7300HQ 8G GTX1050 4G', 'Windows 10', '8G', '全高清屏(1920×1080)', 'GTX960M', 'Intel i5标准电压版', '4G', '游戏本', '128G+1T', '153123456789', '1231', '369', '0', null);
+INSERT INTO `wh_product` VALUES ('24', '7', '戴尔灵越游匣15PR-5645SE', '7999.00', '枪弹版 i7-7700HQ 8G GTX1050 4G', 'Windows 10', '8G', '全高清屏(1920×1080)', 'GTX960M', 'Intel i7标准电压版', '4G', '游戏本', '128G+1T', '1539923456789', '221', '179', '0', null);
+INSERT INTO `wh_product` VALUES ('25', '7', '戴尔游匣', '6099.00', '精锐版 i7-6700HQ 4G GTX960 4G', 'Windows 10', '4G', '全高清屏(1920×1080)', 'GTX960M', 'Intel i7标准电压版', '4G', '游戏本', '128G+1T', '1519123456789', '711', '289', '1', null);
+INSERT INTO `wh_product` VALUES ('26', '7', '戴尔游匣', '5299.00', '精锐版 i5-6300HQ 4G GTX960 4G', 'Windows 10', '4G', '全高清屏(1920×1080)', 'GTX960M', 'Intel i5标准电压版', '4G', '游戏本', '128G+1T', '1529123456789', '319', '181', '0', null);
+INSERT INTO `wh_product` VALUES ('27', '7', '戴尔灵越游匣15PR-5645B', '5999.00', '宗师版 i5-7300HQ 8G GTX1050 4G', 'Windows 10', '8G', '全高清屏(1920×1080)', 'GTX1050', 'Intel i7标准电压版', '4G', '游戏本', '128G+1T', '1511123456789', '2110', '490', '0', null);
+INSERT INTO `wh_product` VALUES ('28', '8', 'ThinkPadE470 c', '3998.00', '【E470C-2017新】i5 4G 500G', 'Linux', '4G', '标准屏(1366×768)', '入门级游戏独立显卡', 'Intel i5低功耗版', '2G', '常规本', '500G', '150123456789', '117', '283', '1', null);
+INSERT INTO `wh_product` VALUES ('29', '8', 'ThinkPadE470 c', '4699.00', '【E470C-2017新】i5 8G 500G', 'Linux', '8G', '标准屏(1366×768)', '入门级游戏独立显卡', 'Intel i5低功耗版', '2G', '常规本', '500G', '151123456789', '1862', '138', '0', null);
+INSERT INTO `wh_product` VALUES ('30', '8', 'ThinkPadE470 c', '5499.00', '【E470C-2017新】i5 8G 1TB', 'Linux', '8G', '标准屏(1366×768)', '入门级游戏独立显卡', 'Intel i5低功耗版', '2G', '常规本', '1T', '152123456789', '812', '188', '1', null);
+INSERT INTO `wh_product` VALUES ('31', '8', 'ThinkPadE470 c', '5399.00', '【E470C-2017新】i5 4G 256GSSD', 'Linux', '4G', '标准屏(1366×768)', '入门级游戏独立显卡', 'Intel i5低功耗版', '2G', '常规本', '256G固态', '153123456789', '162', '338', '0', null);
+INSERT INTO `wh_product` VALUES ('32', '8', 'ThinkPadE470 c', '5499.00', '【E470C-2017新】i5 8G 256GSSD', 'Linux', '8G', '标准屏(1366×768)', '入门级游戏独立显卡', 'Intel i5低功耗版', '2G', '常规本', '256G固态', '154123456789', '1180', '220', '0', null);
+INSERT INTO `wh_product` VALUES ('33', '9', '华硕FH5900V', '4999.00', '【高速】顽石游戏本i74G1T128SSD', 'Windows 10', '4G', '全高清屏(1920*1080)', '入门级游戏独立显卡', 'Intel i7标准电压版', '2G', '游戏本', '128G+1T', '1450123456789', '1231', '369', '0', null);
+INSERT INTO `wh_product` VALUES ('34', '9', '华硕FL5900UQ', '4699.00', '顽石经典【高配i7 8G 1T 深蓝】', 'Windows 10', '8G', '全高清屏(1920*1080)', '入门级游戏独立显卡', 'Intel i7低功耗版', '2G', '游戏本', '1T', '1550123456789', '1231', '469', '1', null);
+INSERT INTO `wh_product` VALUES ('35', '9', '华硕FL5900UQ', '4999.00', '顽石双盘【i7 4G 1t加128SSD】', 'Windows 10', '4G', '全高清屏(1920*1080)', '入门级游戏独立显卡', 'Intel i7低功耗版', '2G', '游戏本', '128G+1T', '1531023456789', '221', '279', '0', null);
+INSERT INTO `wh_product` VALUES ('36', '9', '华硕FL5900U', '4799.00', '顽石高速【i7-4G 512SSD 炫红】', 'Windows 10', '4G', '全高清屏(1920*1080)', 'GT940M', 'Intel i7低功耗版', '2G', '游戏本', '512G固态', '1510123456789', '103', '97', '1', null);
+INSERT INTO `wh_product` VALUES ('37', '9', '华硕FL5900UQ', '4799.00', '顽石高速【i74G512SSD NV940MX】', 'Windows 10', '4G', '全高清屏(1920*1080)', '入门级游戏独立显卡', 'Intel i7低功耗版', '2G', '游戏本', '512G固态', '1450123456789', '341', '159', '0', null);
+INSERT INTO `wh_product` VALUES ('38', '10', '神舟战神Z7M-KP7GT', '6199.00', 'Z7M GT【i7 128G+1T GTX1050Ti】', 'Windows 10', '8G', '全高清屏(1920×1080)', 'GTX1050Ti', 'Intel i7标准电压版', '4G', '游戏本', '128G+1T', '151123456789', '441', '259', '0', null);
+INSERT INTO `wh_product` VALUES ('39', '10', '神舟战神Z7M', '5499.00', '战神Z7M【四核i7 GTX965M】', 'Windows 10', '8G', '全高清屏(1920×1080)', 'GTX965M', 'Intel i7标准电压版', '4G', '游戏本', '128G+1T', '152123456789', '1289', '211', '1', null);
 
 -- ----------------------------
 -- Table structure for `wh_product_family`
@@ -615,7 +615,7 @@ CREATE TABLE `wh_user` (
   `gender` tinyint(4) DEFAULT NULL COMMENT '#性别   0：女  1：男',
   `real_name` varchar(16) DEFAULT NULL,
   `token_id` int(11) DEFAULT NULL COMMENT '用于判断用户权限等级，空值时候为最低',
-  `status` varchar(32) DEFAULT NULL,
+  `status` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`uid`),
   KEY `token_id` (`token_id`),
   CONSTRAINT `wh_user_ibfk_1` FOREIGN KEY (`token_id`) REFERENCES `wh_token` (`token_id`)
@@ -624,7 +624,7 @@ CREATE TABLE `wh_user` (
 -- ----------------------------
 -- Records of wh_user
 -- ----------------------------
-INSERT INTO `wh_user` VALUES ('1', 'dingding', '123456', '78527309@qq.com', '13501234567', '1', '丁伟', null, null);
+INSERT INTO `wh_user` VALUES ('1', 'dingding', '123456', '78527309@qq.com', '13501234567', '1', '丁伟', '1', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiZGluZ2RpbmciLCJpYXQiOjE1Njc1OTkwOTEsImV4cCI6MTU2NzU5OTEyMX0.6CR4nR8N02XY7RYMfXx4NRjrm4_U6sc9LP7aphwczd8');
 INSERT INTO `wh_user` VALUES ('2', 'dangdang', '234567', 'dang@qq.com', '13501234568', '1', '林当', null, '');
 INSERT INTO `wh_user` VALUES ('3', 'doudou', '345678', 'dou@qq.com', '13501234569', '1', '窦志强', null, '');
 INSERT INTO `wh_user` VALUES ('4', 'yaya', '456789', 'yaya@qq.com', '13501234560', '0', '秦小雅', null, null);

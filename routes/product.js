@@ -147,7 +147,7 @@ router.get("/v1/repertory",(req,res)=>{
     res.send({code:-1,mgs:"请先登录"})
     return;
   }
- 
+  console.log(uid);
   let output={
     count:0,
     pageSize:30,
