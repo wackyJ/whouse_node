@@ -26,41 +26,27 @@ router.post('/v1/register',(req,res)=>{
 
 //2.添加用户登录路由
 router.post("/v1/login",(req, res)=>{
-  //准备2个变量用来保存登录用户的token_id和用户状态
-  let token_id,$status;
   let $uname=req.body.params.uname;
   let $upwd=req.body.params.upwd;
   let sql="SELECT uid,uname,upwd,token_id,status FROM wh_user WHERE uname=? AND upwd=?";
   query(sql,[$uname,$upwd]).then(result=>{
       if(result.length>0){
-        //  将用户id保存session对象中
+        let token_id=result[0].token_id;
         let uid=result[0].uid;
         let uname=result[0].uname;
-        // 获取现有session中的独有用户状态码
-        // let usc=req.session.uStatusCode;
-        // console.log(usc); console.log(result[0].status);
-        // 如果usc存在说明用户已经登录
-        let $uid=req.session.uid;
-        // if($uid){
-        //   if($uid==uid){
-        //     res.send({code:-2,mgs:"禁止重复登录！"});
-        //   } 
-        // }
-        let code=200;
-        $uid==uid?code=-2:code=200;
+        //  将用户id保存session对象中
         req.session.uid=uid;// uid当前登录：用户凭证
-        token_id=result[0].token_id;
+        //  将用户token_id保存session对象中
+        req.session.token_id=token_id;////当前用户权限凭证
         // 生成token信息
         let content ={uid}; // token的主题信息
         let secretOrPrivateKey="whouseUser" // 这是加密的key（密钥） 
-        $status = jwt.sign(content, secretOrPrivateKey, {
+        let $status = jwt.sign(content, secretOrPrivateKey, {
           expiresIn: 60*60*1  // 1小时过期
         });
         // 将$status存入数据库
         query("UPDATE  wh_user SET status=? WHERE uid=?",[$status,uid]).then(result=>{
-          // 把生成的token保存入session中,使得每次登录产生不同的用户登录状态码
-          req.session.uStatusCode=$status;// uid当前登录：用户凭证
-          res.send({code,msg:"login successfully",data:{uid,uname}})
+          res.send({code:200,msg:"login successfully",data:{uid,uname,status:$status}})
         });
       }else{
         res.send({code:201,msg:"login failure"})
