@@ -31,12 +31,26 @@ router.post("/v1/login",(req, res)=>{
   query(sql,[$uname,$upwd]).then(result=>{
       if(result.length>0){
         //  将用户id保存session对象中
-        let $uid=result[0].uid;
-        req.session.uid=$uid;// uid当前登录：用户凭证
-        res.send({code:200,msg:"login successfully"})
+        let uid=result[0].uid;
+        let uname=result[0].uname;
+        req.session.uid=uid;// uid当前登录：用户凭证
+        res.send({code:200,msg:"login successfully",data:{uid,uname}})
       }else{
         res.send({code:201,msg:"login failure"})
       }
+    })
+  })
+
+  // 3.用户个人信息获取路由
+  router.get("/v1/userInfo",(req,res)=>{
+    let uid = req.session.uid;
+    if(!uid){
+      res.send({code:-1,mgs:"请先登录"})
+      return;
+    }
+    let sql="SELECT uid,uname FROM wh_user where uid=?";
+    query(sql,[uid]).then(result=>{
+      res.send({code:200,msg:"success",data:result[0]})
     })
   })
 
