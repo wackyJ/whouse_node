@@ -7,7 +7,7 @@ router.get('/v1/userList',(req,res)=>{
   //判断用户是否已经登录
   let uid = req.session.uid;
   if(!uid){
-    res.send({code:-1,mgs:"请先登录"})
+    res.send({code:-1,mgs:"请先登录"});
     return;
   }
   var output={
@@ -49,5 +49,26 @@ router.get("/v1/deluser",(req,res)=>{
     }
   })
 })
+// 3.修改用户信息
+router.post("/v1/upuser",(req,res)=>{
+  //判断用户是否已经登录
+  let uid = req.session.uid;
+  if(!uid){
+    res.send({code:-1,mgs:"请先登录"});
+    return;
+  }
+  var obj = req.body.params.newSel;
+  var $uid = obj.uid;
+  delete obj.uid;
+  var sql = "update wh_user set ? where uid = ?";
+  query(sql,[obj,$uid]).then(result=>{
+    if(result.affectedRows>0){
+      res.send({code:200,msg:"update success"});
+    }else{
+      res.send({code:201,msg:"update fail"});
+    }
+  })
+})
+// 4.设置页面添加用户   -----待后期完善
 
 module.exports = router;
