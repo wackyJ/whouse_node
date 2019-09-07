@@ -150,7 +150,7 @@ router.get("/v1/repertory",(req,res)=>{
   console.log(uid);
   let output={
     count:0,
-    pageSize:30,
+    pageSize:10,
     pageCount:0,
     pno:req.query.pno||0,
     data:[]

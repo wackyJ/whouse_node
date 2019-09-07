@@ -1,6 +1,10 @@
 const express = require("express");
 const query = require("./query");
 const router = express.Router();
+//所有订单信息（包含订单详情查询）
+router.get("/v1/allOrders",(req,res)=>{
+  query()
+})
 //订单提交
 router.post("/v1/OrderSubmission",(req,res)=>{
   //判断用户是否已经登录
