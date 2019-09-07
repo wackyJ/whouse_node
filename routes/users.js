@@ -63,11 +63,19 @@ router.post("/v1/login",(req, res)=>{
     }
     let sql="SELECT uid,uname,status FROM wh_user where uid=?";
     query(sql,[uid]).then(result=>{
+      // console.log(result)
         res.send({code:200,msg:"success",data:result[0]});
     })
   })
 
-//4.检测用户登录(token)是否过期
+  //4.清除用户登录信息
+  router.post("/v1/clearUser",(req,res)=>{
+    delete req.session.uid;
+    delete req.session.token_id;
+    res.send({code:-3,msg:"logout success!"})
+  })
+
+//5.检测用户登录(token)是否过期
 /*router.post("/v1/checkUser",(req,res)=>{
   query("SELECT uname,status FROM wh_user WHERE uname=? AND status=?",[req.body.params.uname,req.body.params.status]).then(result=>{
     if(result.length>0){
