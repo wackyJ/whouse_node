@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2019-09-06 19:29:48
+Date: 2019-09-07 18:03:41
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -538,14 +538,13 @@ DROP TABLE IF EXISTS `wh_purchase`;
 CREATE TABLE `wh_purchase` (
   `pur_id` int(11) NOT NULL AUTO_INCREMENT,
   `pid` int(11) NOT NULL,
-  `pname` varchar(255) NOT NULL,
-  `pur_count` int(11) NOT NULL,
   `pur_price` decimal(10,2) NOT NULL,
-  `pur_date` date NOT NULL,
-  `pv_id` int(11) NOT NULL,
-  `uid` int(11) NOT NULL,
+  `pur_count` int(11) NOT NULL,
   `pur_total` decimal(10,2) NOT NULL,
+  `pv_id` int(11) NOT NULL,
   `remark` varchar(64) DEFAULT NULL,
+  `uid` int(11) NOT NULL,
+  `pur_date` date NOT NULL,
   PRIMARY KEY (`pur_id`),
   KEY `pid` (`pid`),
   KEY `uid` (`uid`),
@@ -624,7 +623,7 @@ CREATE TABLE `wh_user` (
 -- ----------------------------
 -- Records of wh_user
 -- ----------------------------
-INSERT INTO `wh_user` VALUES ('1', 'dingding', '123456', '78527309@qq.com', '13501234567', '1', '丁伟', '1', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiZGluZ2RpbmciLCJpYXQiOjE1Njc1OTkwOTEsImV4cCI6MTU2NzU5OTEyMX0.6CR4nR8N02XY7RYMfXx4NRjrm4_U6sc9LP7aphwczd8');
-INSERT INTO `wh_user` VALUES ('2', 'dangdang', '234567', 'dang@qq.com', '13501234568', '1', '林当', null, '');
-INSERT INTO `wh_user` VALUES ('3', 'doudou', '345678', 'dou@qq.com', '13501234569', '1', '窦志强', null, '');
-INSERT INTO `wh_user` VALUES ('4', 'yaya', '456789', 'yaya@qq.com', '13501234560', '0', '秦小雅', null, null);
+INSERT INTO `wh_user` VALUES ('1', 'dingding', '123456', '78527309@qq.com', '13501234567', '1', '丁伟', '1', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjEsImlhdCI6MTU2Nzg0OTMxNCwiZXhwIjoxNTY3ODUyOTE0fQ.BcaN_KwsXmNqUh7GFPHX3BPMm0WaSnmb2A3QrB0zWM8');
+INSERT INTO `wh_user` VALUES ('2', 'dangdang', '234567', 'dang@qq.com', '13501234568', '1', '林当', '2', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjIsImlhdCI6MTU2NzgzMjc5MiwiZXhwIjoxNTY3ODM2MzkyfQ.VDoksGqPrcKkdS5aa7AJJOP_uUciU9ruFHdUvzdzzak');
+INSERT INTO `wh_user` VALUES ('3', 'doudou', '345678', 'dou@qq.com', '13501234569', '1', '窦志强', '3', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjMsImlhdCI6MTU2NzgzMjcxNiwiZXhwIjoxNTY3ODM2MzE2fQ.69-gQjV9J68Gd-NX04-GqcPU-7olRGb-rx8SG0S-GqI');
+INSERT INTO `wh_user` VALUES ('4', 'yaya', '456789', 'yaya@qq.com', '13501234560', '0', '秦小雅', '4', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjQsImlhdCI6MTU2Nzg0OTI5OSwiZXhwIjoxNTY3ODUyODk5fQ.usXYQIQPm0yLdi5V1PF7iRzs72dLU4r16tTSkbj6yHs');
