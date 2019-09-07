@@ -2,6 +2,7 @@ const express = require("express");
 const query=require("./query");
 const router = express.Router();
 
+
 /******   1.用户管理   ******/
 //1.1 设置页面的用户模块中查询所有用户信息
 router.get('/v1/userList',(req,res)=>{
@@ -71,6 +72,7 @@ router.post("/v1/upuser",(req,res)=>{
   })
 })
 // 1.4 添加用户   -----待后期完善
+
 
 /******   2.供应商管理   ******/
 //2.1 设置页面的供应商模块中查询所有供应商信息
