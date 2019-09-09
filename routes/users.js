@@ -11,11 +11,11 @@ router.get('/', function(req, res, next) {
 //1.添加用户注册路由
 router.post('/v1/register',(req,res)=>{
   // 获取前端传递的数据
-  var info=req.body;
+  var info=req.body.params;
+  console.log(info);
   //执行sql语句
   var sql='INSERT INTO wh_user SET ?';
-  pool.query(sql,[info],(err,result)=>{
-    if(err)throw err;
+  query(sql,[info]).then(result=>{
     if(result.affectedRows>0){
       res.send({code:200,msg:'registered successfully!'})
     }else{
