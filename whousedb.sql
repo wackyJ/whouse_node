@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2019-09-10 16:12:10
+Date: 2019-09-10 20:41:23
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -537,26 +537,49 @@ INSERT INTO `wh_provider` VALUES ('4', '长沙富之尔数码科技有限公司'
 DROP TABLE IF EXISTS `wh_purchase`;
 CREATE TABLE `wh_purchase` (
   `pur_id` int(11) NOT NULL AUTO_INCREMENT,
-  `pid` int(11) NOT NULL,
-  `pur_price` decimal(10,2) NOT NULL,
-  `pur_count` int(11) NOT NULL,
-  `pur_total` decimal(10,2) NOT NULL,
-  `pv_id` int(11) NOT NULL,
+  `pur_num` int(11) NOT NULL,
   `remark` varchar(64) DEFAULT NULL,
   `uid` int(11) NOT NULL,
-  `pur_date` date NOT NULL,
+  `pur_date` date DEFAULT NULL,
   PRIMARY KEY (`pur_id`),
-  KEY `pid` (`pid`),
   KEY `uid` (`uid`),
-  KEY `pv_id` (`pv_id`),
-  CONSTRAINT `wh_purchase_ibfk_1` FOREIGN KEY (`pid`) REFERENCES `wh_product` (`pid`),
-  CONSTRAINT `wh_purchase_ibfk_2` FOREIGN KEY (`uid`) REFERENCES `wh_user` (`uid`),
-  CONSTRAINT `wh_purchase_ibfk_3` FOREIGN KEY (`pv_id`) REFERENCES `wh_provider` (`pv_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  KEY `pur_num` (`pur_num`),
+  CONSTRAINT `wh_purchase_ibfk_2` FOREIGN KEY (`uid`) REFERENCES `wh_user` (`uid`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of wh_purchase
 -- ----------------------------
+INSERT INTO `wh_purchase` VALUES ('1', '2019091011', null, '1', '2019-09-10');
+INSERT INTO `wh_purchase` VALUES ('2', '2019', null, '3', '2019-09-10');
+INSERT INTO `wh_purchase` VALUES ('3', '2013132', null, '1', '2019-09-10');
+INSERT INTO `wh_purchase` VALUES ('4', '2019091023', null, '1', '2019-09-10');
+INSERT INTO `wh_purchase` VALUES ('5', '2019091022', null, '1', '2019-09-10');
+
+-- ----------------------------
+-- Table structure for `wh_purchase_detail`
+-- ----------------------------
+DROP TABLE IF EXISTS `wh_purchase_detail`;
+CREATE TABLE `wh_purchase_detail` (
+  `pur_num` int(11) NOT NULL AUTO_INCREMENT,
+  `pid` int(11) NOT NULL,
+  `pur_price` decimal(10,2) NOT NULL,
+  `pur_count` int(11) NOT NULL,
+  `total` decimal(10,2) NOT NULL,
+  `pv_id` int(11) NOT NULL,
+  `remark` varchar(64) DEFAULT NULL,
+  `uid` int(11) NOT NULL,
+  `pur_date` date DEFAULT NULL,
+  PRIMARY KEY (`pur_num`),
+  KEY `pid` (`pid`),
+  KEY `pv_id` (`pv_id`),
+  KEY `uid` (`uid`)
+) ENGINE=InnoDB AUTO_INCREMENT=2019091023 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of wh_purchase_detail
+-- ----------------------------
+INSERT INTO `wh_purchase_detail` VALUES ('2019091022', '1', '5687.00', '6', '34122.00', '0', null, '1', '2019-09-10');
 
 -- ----------------------------
 -- Table structure for `wh_receiver_address`
@@ -623,7 +646,7 @@ CREATE TABLE `wh_user` (
 -- ----------------------------
 -- Records of wh_user
 -- ----------------------------
-INSERT INTO `wh_user` VALUES ('1', 'dingding', '123456', '78527309@qq.com', '13501234567', '1', '丁伟', '1', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjEsImlhdCI6MTU2ODEwMjkzNCwiZXhwIjoxNTY4MTA2NTM0fQ.YW25NjNrlb--tyyEirrnnNsuBhBcgPAcrBZ_eUBvIN4');
+INSERT INTO `wh_user` VALUES ('1', 'dingding', '123456', '78527309@qq.com', '13501234567', '1', '丁伟', '1', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjEsImlhdCI6MTU2ODExOTA3OCwiZXhwIjoxNTY4MTIyNjc4fQ.p7UEnGNlEuhg8y1ye1KDrNrgbqxX8JIF8PQFS6JXzj0');
 INSERT INTO `wh_user` VALUES ('2', 'dangdang', '234567', 'dang@qq.com', '13501234568', '1', '林当', '2', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjIsImlhdCI6MTU2NzgzMjc5MiwiZXhwIjoxNTY3ODM2MzkyfQ.VDoksGqPrcKkdS5aa7AJJOP_uUciU9ruFHdUvzdzzak');
 INSERT INTO `wh_user` VALUES ('3', 'doudou', '345678', 'dou@qq.com', '13501234569', '1', '窦志强', '3', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjMsImlhdCI6MTU2NzgzMjcxNiwiZXhwIjoxNTY3ODM2MzE2fQ.69-gQjV9J68Gd-NX04-GqcPU-7olRGb-rx8SG0S-GqI');
 INSERT INTO `wh_user` VALUES ('4', 'yaya', '456789', 'yaya@qq.com', '13501234560', '0', '秦小雅', '4', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjQsImlhdCI6MTU2Nzg0OTI5OSwiZXhwIjoxNTY3ODUyODk5fQ.usXYQIQPm0yLdi5V1PF7iRzs72dLU4r16tTSkbj6yHs');

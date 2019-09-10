@@ -28,15 +28,15 @@ router.post("/v1/OrderSubmission",(req,res)=>{
     obj.delivery_date=$orderForm.delivery_date;
     return obj;
   });
-  console.log($orderDetail);
+  // console.log($orderDetail);
   $orderForm.firstAdress=$orderForm.firstAdress.join("/");
-  console.log($orderForm);
+  // console.log($orderForm);
   let sql="INSERT INTO wh_order SET ?";
   query(sql,[$orderForm]).then(result=>{
     for(let i=0;i<$orderDetail.length;i++){
       let sql="INSERT INTO wh_order_detail SET ?";
       query(sql,[$orderDetail[i]]).then(result=>{})
-      console.log($orderDetail[i]);
+      // console.log($orderDetail[i]);
     }
    /*$orderDetail.map((obj,index,arr)=>{
       let sql="INSERT INTO wh_order_detail SET ?";
@@ -80,17 +80,17 @@ router.get("/v1/search",(req,res)=>{
     output.count=result.length;
     output.pageCount=Math.ceil(output.count/output.pageSize);
     sql+=` limit ?,?`;
-    console.log(output.pageSize);
+    // console.log(output.pageSize);
     return query(sql,[kw,output.pageSize*output.pno,output.pageSize]);
   })
   .then(result=>{
-    console.log(2);
-    console.log(result);
+    // console.log(2);
+    // console.log(result);
     output.data=result;
     res.send(output);
   }).catch(err=>{
-    console.log(3);
-    console.log(err);
+    // console.log(3);
+    // console.log(err);
   })
 })
 

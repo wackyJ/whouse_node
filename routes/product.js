@@ -2,7 +2,8 @@ const query=require("./query");
 const express = require("express");
 const router= express.Router();
 
-// 商品页面接口
+// *******商品页面接口**********
+// 所有商品查询
 router.get("/v1/allProduct",(req,res)=>{
   //判断用户是否已经登录
   let uid = req.session.uid;
@@ -31,7 +32,7 @@ router.get("/v1/allProduct",(req,res)=>{
     res.send(output);
   })
 });
-
+// 商品数据修改
 router.post("/v1/updata",(req,res)=>{
   //判断用户是否已经登录
   let uid = req.session.uid;
@@ -51,7 +52,7 @@ router.post("/v1/updata",(req,res)=>{
 		}
    })
  })
-
+// 单个商品删除
 router.delete("/v1/deldata",(req,res)=>{
   //判断用户是否已经登录
   let uid = req.session.uid;
@@ -69,7 +70,7 @@ router.delete("/v1/deldata",(req,res)=>{
 		}
   })
 })
-
+//商品查询
 router.get("/v1/search",(req,res)=>{
   //判断用户是否已经登录
   let uid = req.session.uid;
@@ -119,27 +120,9 @@ router.get("/v1/search",(req,res)=>{
   }
 })
 
-router.get("/v1/shelp",(req,res)=>{
-  //判断用户是否已经登录
-  let uid = req.session.uid;
-  if(!uid){
-    res.send({code:-1,mgs:"请先登录"})
-    return;
-  }
-  let kw=req.query.kw;
-  let kws=kw.split(" ");
-  kws.forEach((elem,i,arr)=>{
-    arr[i]=`pname like '%${elem}%'`;
-  })
-  let where=kws.join(" and ");
-  let sql=`select pid,pname from wh_product where ${where} limit 10`;
-  query(sql,[]).then(result=>{
-    res.send(result);
-  })
-})
 
-
-// 库存页面接口
+// *********库存页面接口*************
+// 商品库存查询
 router.get("/v1/repertory",(req,res)=>{
   //判断用户是否已经登录
   let uid = req.session.uid;
@@ -147,7 +130,7 @@ router.get("/v1/repertory",(req,res)=>{
     res.send({code:-1,mgs:"请先登录"})
     return;
   }
-  console.log(uid);
+  // console.log(uid);
   let output={
     count:0,
     pageSize:10,
@@ -168,5 +151,32 @@ router.get("/v1/repertory",(req,res)=>{
     res.send(output);
   })
 });
+//商品采购单
+router.post("/v1/purchase",(req,res)=>{
+  let purchaseForm=req.body.params.purchaseForm;
+  let productDetail=req.body.params.productDetail;
+  productDetail=productDetail.map(obj=>{
+    obj.pur_num=parseInt(purchaseForm.pur_num);
+    obj.uid=parseInt(purchaseForm.uid);
+    obj.pur_date=purchaseForm.pur_date;
+    return obj;
+  })
+  // console.log(purchaseForm,productDetail);
+  let sql="INSERT INTO wh_purchase SET ?";
+  query(sql,[purchaseForm])
+  .then(result=>{
+    for(let i=0;i<productDetail.length;i++){
+      let sql="INSERT INTO wh_purchase_detail SET ?";
+      query(sql,[productDetail[i]]).then(result=>{}).catch(()=>{
+        res.send({code:201,msg:"success"})
+      })
+    }
+    res.send({code:200,msg:"success"});
+  })
+  .catch(err=>{
+    res.send({code:201,msg:"success"})
+  })
+})
+
 
 module.exports=router;
