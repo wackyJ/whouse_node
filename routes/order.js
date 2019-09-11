@@ -97,7 +97,6 @@ router.get("/v1/search",(req,res)=>{
 router.get("/v1/statusCode",(req,res)=>{
   let sql="SELECT ostatus FROM wh_order";
   query(sql).then(result=>{
-    console.log(result);
     res.send({code:200,msg:"success",data:result});
   })
 })
