@@ -61,7 +61,7 @@ router.post("/v1/login",(req, res)=>{
       res.send({code:-1,mgs:"请先登录"})
       return;
     }
-    let sql="SELECT uid,uname,status,token_id FROM wh_user where uid=?";
+    let sql="SELECT uid,uname,upwd,email,uphone,gender,real_name,status,token_id FROM wh_user where uid=?";
     query(sql,[uid]).then(result=>{
       // console.log(result)
         res.send({code:200,msg:"success",data:result[0]});

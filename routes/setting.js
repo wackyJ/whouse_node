@@ -108,7 +108,7 @@ router.get("/v1/delProvider",(req,res)=>{
   //判断用户是否已经登录
   let uid = req.session.uid;
   if(!uid){
-    res.send({code:-1,msg:"请先登录"})
+    res.send({code:-1,msg:"请先登录"});
     return;
   } 
   var $pv_id = req.query.pv_id;
@@ -131,7 +131,6 @@ router.post("/v1/upProvider",(req,res)=>{
   }
   var obj = req.body.params.newSel;
   var $pv_id = obj.pv_id;
-  var $pv_name = obj.pv_name;
   delete obj.pv_id;
   if($pv_id!=null){
     var sql = "update wh_provider set ? where pv_id = ?";

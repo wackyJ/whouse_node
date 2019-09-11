@@ -1,7 +1,7 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : wackyJ
+Source Server         : zither
 Source Server Version : 50505
 Source Host           : localhost:3306
 Source Database       : whousedb
@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2019-09-10 20:41:23
+Date: 2019-09-11 21:09:33
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -35,6 +35,48 @@ CREATE TABLE `wh_client` (
 INSERT INTO `wh_client` VALUES ('1', 'dongdong', '杭州市江干区东大街155号', '张东', '15765487891', null);
 INSERT INTO `wh_client` VALUES ('2', 'ranran', '浙江省杭州市西湖区紫荆花路4号', '李然', '18269557523', null);
 INSERT INTO `wh_client` VALUES ('3', 'liangliang', '浙江省杭州市拱墅区花园岗街204号', '成亮', '16585231456', null);
+
+-- ----------------------------
+-- Table structure for `wh_log`
+-- ----------------------------
+DROP TABLE IF EXISTS `wh_log`;
+CREATE TABLE `wh_log` (
+  `lid` int(11) NOT NULL AUTO_INCREMENT,
+  `log_msg` varchar(128) DEFAULT NULL,
+  `log_time` datetime DEFAULT NULL,
+  PRIMARY KEY (`lid`)
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of wh_log
+-- ----------------------------
+INSERT INTO `wh_log` VALUES ('1', '任务一', '2019-09-09 20:30:39');
+INSERT INTO `wh_log` VALUES ('2', '任务一', '2019-09-05 20:30:44');
+INSERT INTO `wh_log` VALUES ('3', '任务一', '2019-09-06 20:30:48');
+INSERT INTO `wh_log` VALUES ('4', '任务一', '2019-08-26 20:30:53');
+INSERT INTO `wh_log` VALUES ('5', '任务一', '2019-08-13 20:30:58');
+INSERT INTO `wh_log` VALUES ('6', '任务一', '2019-09-05 20:31:05');
+INSERT INTO `wh_log` VALUES ('7', '任务一', '2019-07-03 20:31:09');
+INSERT INTO `wh_log` VALUES ('8', '任务一', '2019-08-28 20:31:16');
+INSERT INTO `wh_log` VALUES ('9', '任务一', '2019-08-12 20:31:21');
+INSERT INTO `wh_log` VALUES ('10', 'fsfrre', '2019-09-11 16:09:51');
+INSERT INTO `wh_log` VALUES ('11', 'fsfsf', '2019-09-11 16:46:19');
+INSERT INTO `wh_log` VALUES ('12', 'sfsfsf', '2019-09-11 16:48:16');
+INSERT INTO `wh_log` VALUES ('13', '4234234', '2019-09-11 16:49:19');
+INSERT INTO `wh_log` VALUES ('14', 'tryyrty', '2019-09-11 16:49:33');
+INSERT INTO `wh_log` VALUES ('15', 'fgsfse', '2019-09-11 16:50:14');
+INSERT INTO `wh_log` VALUES ('16', '组花今天要吃黄焖鸡', '2019-09-11 16:50:42');
+INSERT INTO `wh_log` VALUES ('17', 'qwertasd', '2019-09-11 16:54:38');
+INSERT INTO `wh_log` VALUES ('18', 'dfgvcdc', '2019-09-11 16:55:48');
+INSERT INTO `wh_log` VALUES ('19', '明晚放假', '2019-09-11 16:56:35');
+INSERT INTO `wh_log` VALUES ('20', '后天不上课', '2019-09-11 16:57:42');
+INSERT INTO `wh_log` VALUES ('21', '123wqas', '2019-09-11 16:59:53');
+INSERT INTO `wh_log` VALUES ('22', '7886hjnnjk', '2019-09-11 17:01:57');
+INSERT INTO `wh_log` VALUES ('23', '432432fsdfsf', '2019-09-11 17:04:41');
+INSERT INTO `wh_log` VALUES ('24', '3123afsf', '2019-09-11 17:06:01');
+INSERT INTO `wh_log` VALUES ('25', '1234qwe', '2019-09-11 17:07:16');
+INSERT INTO `wh_log` VALUES ('26', 'ihjihjiuhiu', '2019-09-11 17:09:56');
+INSERT INTO `wh_log` VALUES ('27', '3434sfsdfs', '2019-09-11 17:10:26');
 
 -- ----------------------------
 -- Table structure for `wh_order`
@@ -84,7 +126,7 @@ CREATE TABLE `wh_order_detail` (
   PRIMARY KEY (`did`),
   KEY `onum` (`onum`),
   CONSTRAINT `wh_order_detail_ibfk_1` FOREIGN KEY (`onum`) REFERENCES `wh_order` (`onum`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of wh_order_detail
@@ -537,49 +579,26 @@ INSERT INTO `wh_provider` VALUES ('4', '长沙富之尔数码科技有限公司'
 DROP TABLE IF EXISTS `wh_purchase`;
 CREATE TABLE `wh_purchase` (
   `pur_id` int(11) NOT NULL AUTO_INCREMENT,
-  `pur_num` int(11) NOT NULL,
+  `pid` int(11) NOT NULL,
+  `pur_price` decimal(10,2) NOT NULL,
+  `pur_count` int(11) NOT NULL,
+  `pur_total` decimal(10,2) NOT NULL,
+  `pv_id` int(11) NOT NULL,
   `remark` varchar(64) DEFAULT NULL,
   `uid` int(11) NOT NULL,
-  `pur_date` date DEFAULT NULL,
+  `pur_date` date NOT NULL,
   PRIMARY KEY (`pur_id`),
+  KEY `pid` (`pid`),
   KEY `uid` (`uid`),
-  KEY `pur_num` (`pur_num`),
-  CONSTRAINT `wh_purchase_ibfk_2` FOREIGN KEY (`uid`) REFERENCES `wh_user` (`uid`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+  KEY `pv_id` (`pv_id`),
+  CONSTRAINT `wh_purchase_ibfk_1` FOREIGN KEY (`pid`) REFERENCES `wh_product` (`pid`),
+  CONSTRAINT `wh_purchase_ibfk_2` FOREIGN KEY (`uid`) REFERENCES `wh_user` (`uid`),
+  CONSTRAINT `wh_purchase_ibfk_3` FOREIGN KEY (`pv_id`) REFERENCES `wh_provider` (`pv_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of wh_purchase
 -- ----------------------------
-INSERT INTO `wh_purchase` VALUES ('1', '2019091011', null, '1', '2019-09-10');
-INSERT INTO `wh_purchase` VALUES ('2', '2019', null, '3', '2019-09-10');
-INSERT INTO `wh_purchase` VALUES ('3', '2013132', null, '1', '2019-09-10');
-INSERT INTO `wh_purchase` VALUES ('4', '2019091023', null, '1', '2019-09-10');
-INSERT INTO `wh_purchase` VALUES ('5', '2019091022', null, '1', '2019-09-10');
-
--- ----------------------------
--- Table structure for `wh_purchase_detail`
--- ----------------------------
-DROP TABLE IF EXISTS `wh_purchase_detail`;
-CREATE TABLE `wh_purchase_detail` (
-  `pur_num` int(11) NOT NULL AUTO_INCREMENT,
-  `pid` int(11) NOT NULL,
-  `pur_price` decimal(10,2) NOT NULL,
-  `pur_count` int(11) NOT NULL,
-  `total` decimal(10,2) NOT NULL,
-  `pv_id` int(11) NOT NULL,
-  `remark` varchar(64) DEFAULT NULL,
-  `uid` int(11) NOT NULL,
-  `pur_date` date DEFAULT NULL,
-  PRIMARY KEY (`pur_num`),
-  KEY `pid` (`pid`),
-  KEY `pv_id` (`pv_id`),
-  KEY `uid` (`uid`)
-) ENGINE=InnoDB AUTO_INCREMENT=2019091023 DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of wh_purchase_detail
--- ----------------------------
-INSERT INTO `wh_purchase_detail` VALUES ('2019091022', '1', '5687.00', '6', '34122.00', '0', null, '1', '2019-09-10');
 
 -- ----------------------------
 -- Table structure for `wh_receiver_address`
@@ -604,6 +623,38 @@ CREATE TABLE `wh_receiver_address` (
 -- ----------------------------
 -- Records of wh_receiver_address
 -- ----------------------------
+
+-- ----------------------------
+-- Table structure for `wh_tips`
+-- ----------------------------
+DROP TABLE IF EXISTS `wh_tips`;
+CREATE TABLE `wh_tips` (
+  `tip_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键ID',
+  `msg` varchar(128) NOT NULL COMMENT '展示信息',
+  `type` varchar(1) NOT NULL COMMENT '0:入库；1：出库',
+  `create_time` datetime NOT NULL COMMENT '创建时间',
+  PRIMARY KEY (`tip_id`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
+
+-- ----------------------------
+-- Records of wh_tips
+-- ----------------------------
+INSERT INTO `wh_tips` VALUES ('1', '测试数据', '0', '2019-09-08 11:03:05');
+INSERT INTO `wh_tips` VALUES ('2', '测试数据', '0', '2019-09-08 11:03:05');
+INSERT INTO `wh_tips` VALUES ('3', '测试数据', '0', '2019-09-08 11:03:06');
+INSERT INTO `wh_tips` VALUES ('4', '测试数据', '0', '2019-09-08 11:03:06');
+INSERT INTO `wh_tips` VALUES ('5', '测试数据', '0', '2019-09-08 11:03:06');
+INSERT INTO `wh_tips` VALUES ('6', '测试数据', '0', '2019-09-08 11:03:07');
+INSERT INTO `wh_tips` VALUES ('7', '测试数据', '0', '2019-09-08 11:03:07');
+INSERT INTO `wh_tips` VALUES ('8', '测试数据', '0', '2019-09-08 11:03:07');
+INSERT INTO `wh_tips` VALUES ('9', '测试数据', '0', '2019-09-08 11:03:07');
+INSERT INTO `wh_tips` VALUES ('10', '测试数据', '0', '2019-09-08 11:03:08');
+INSERT INTO `wh_tips` VALUES ('11', '测试数据', '0', '2019-09-08 11:03:08');
+INSERT INTO `wh_tips` VALUES ('12', '测试数据', '0', '2019-09-08 11:03:08');
+INSERT INTO `wh_tips` VALUES ('13', '测试数据', '0', '2019-09-08 11:03:08');
+INSERT INTO `wh_tips` VALUES ('14', '测试数据', '0', '2019-09-08 11:03:08');
+INSERT INTO `wh_tips` VALUES ('15', '测试数据', '0', '2019-09-08 11:03:08');
+INSERT INTO `wh_tips` VALUES ('16', '测试数据', '0', '2019-09-08 11:03:09');
 
 -- ----------------------------
 -- Table structure for `wh_token`
@@ -646,7 +697,7 @@ CREATE TABLE `wh_user` (
 -- ----------------------------
 -- Records of wh_user
 -- ----------------------------
-INSERT INTO `wh_user` VALUES ('1', 'dingding', '123456', '78527309@qq.com', '13501234567', '1', '丁伟', '1', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjEsImlhdCI6MTU2ODExOTA3OCwiZXhwIjoxNTY4MTIyNjc4fQ.p7UEnGNlEuhg8y1ye1KDrNrgbqxX8JIF8PQFS6JXzj0');
+INSERT INTO `wh_user` VALUES ('1', 'dingding', '123456', '78527309@qq.com', '13501234567', '1', '丁伟', '1', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjEsImlhdCI6MTU2ODIwMjY0MSwiZXhwIjoxNTY4MjA2MjQxfQ.XX1vkSgzNscYjcDJdg-l60aixwV8sXGhvTp0EVx_MHs');
 INSERT INTO `wh_user` VALUES ('2', 'dangdang', '234567', 'dang@qq.com', '13501234568', '1', '林当', '2', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjIsImlhdCI6MTU2NzgzMjc5MiwiZXhwIjoxNTY3ODM2MzkyfQ.VDoksGqPrcKkdS5aa7AJJOP_uUciU9ruFHdUvzdzzak');
 INSERT INTO `wh_user` VALUES ('3', 'doudou', '345678', 'dou@qq.com', '13501234569', '1', '窦志强', '3', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjMsImlhdCI6MTU2NzgzMjcxNiwiZXhwIjoxNTY3ODM2MzE2fQ.69-gQjV9J68Gd-NX04-GqcPU-7olRGb-rx8SG0S-GqI');
 INSERT INTO `wh_user` VALUES ('4', 'yaya', '456789', 'yaya@qq.com', '13501234560', '0', '秦小雅', '4', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjQsImlhdCI6MTU2Nzg0OTI5OSwiZXhwIjoxNTY3ODUyODk5fQ.usXYQIQPm0yLdi5V1PF7iRzs72dLU4r16tTSkbj6yHs');
