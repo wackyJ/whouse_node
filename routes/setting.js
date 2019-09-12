@@ -145,6 +145,7 @@ router.post("/v1/upProvider",(req,res)=>{
     var sql = "insert into wh_provider set ?";
     query(sql,[obj]).then((result)=>{
       if(result.affectedRows>0){
+        console.log(result);
         res.send({code:202,msg:'add success',newId:result.insertId});
       }else{
         res.send({code:203,msg:"add fail"});
