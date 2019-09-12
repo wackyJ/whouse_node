@@ -19,31 +19,38 @@ router.post("/v1/OrderSubmission",(req,res)=>{
     res.send({code:-1,msg:"请先登录"})
     return;
   }
-  req.session.cookie.maxAge=req.session.cookie.originalMaxAge;
   let $orderForm = req.body.params.orderForm;
   let $orderDetail = req.body.params.orderDetail;
-  $orderDetail=$orderDetail.map(obj=>{
-    obj.onum=$orderForm.onum;
-    obj.create_date=$orderForm.create_date;
-    obj.delivery_date=$orderForm.delivery_date;
-    return obj;
-  });
-  // console.log($orderDetail);
   $orderForm.firstAdress=$orderForm.firstAdress.join("/");
-  // console.log($orderForm);
   let sql="INSERT INTO wh_order SET ?";
   query(sql,[$orderForm]).then(result=>{
+    // console.log("订单插入成功！");
+    $orderDetail=$orderDetail.map(obj=>{
+      obj.onum=result.insertId;
+      obj.create_date=$orderForm.create_date;
+      obj.delivery_date=$orderForm.delivery_date;
+      delete obj.total;
+      return obj;
+    });
+    // 循环将提交的商品插入订单详情表
     for(let i=0;i<$orderDetail.length;i++){
       let sql="INSERT INTO wh_order_detail SET ?";
-      query(sql,[$orderDetail[i]]).then(result=>{})
-      // console.log($orderDetail[i]);
+      query(sql,[$orderDetail[i]])
+      .then(result=>{
+        // console.log("订单详情插入成功！");
+        //订单表中商品添加成功，则库存中对应商品数量减少
+        let sql="UPDATE wh_product SET repertory_count=repertory_count-? , sold_count=sold_count+? WHERE pid=?  ";
+        query(sql,[$orderDetail[i].pcount,$orderDetail[i].pcount,$orderDetail[i].pid]).then(()=>{
+          // console.log(`${i+1}行商品减少成功！`);
+        })
+      }).catch(err=>{
+        // console.log(`第${i+1}行商品添加失败，后续商品未能添加`);
+        //如果添加失败则返回具体第几行商品出错
+        res.send({code:201,msg:`第${i+1}行商品添加失败，后续商品未能添加`})
+      })
     }
-   /*$orderDetail.map((obj,index,arr)=>{
-      let sql="INSERT INTO wh_order_detail SET ?";
-      query(sql,[obj]).then(result=>{});
-      console.log(index);
-    });*/
-    res.send({code:200,msg:"success"});
+    console.log(result.insertId);
+    res.send({code:200,msg:"success",data:result.insertId});
   })
 });
 //订单商品单价显示

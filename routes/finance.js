@@ -9,7 +9,7 @@ router.get("/v1/weeklySales",(req,res)=>{
         res.send({code:-1,mgs:"请先登录"})
         return;
     }
-    pool.query("select week(delivery_date),SUM(price*pcount) AS total from wh_order_detail GROUP BY week(delivery_date)",(err,result)=>{
+    pool.query("select week(delivery_date),SUM(sell_price*pcount) AS total from wh_order_detail GROUP BY week(delivery_date)",(err,result)=>{
         if(err){
             res.send({code:201,msg:`${err}`})
         }else{
@@ -25,7 +25,7 @@ router.get("/v1/monthlySales",(req,res)=>{
         res.send({code:-1,mgs:"请先登录"})
         return;
     }
-    pool.query("select month(delivery_date),SUM(price*pcount) AS total from wh_order_detail GROUP BY month(delivery_date)",(err,result)=>{
+    pool.query("select month(delivery_date),SUM(Sell_price*pcount) AS total from wh_order_detail GROUP BY month(delivery_date)",(err,result)=>{
         if(err){
             res.send({code:201,msg:`${err}`})
         }else{
@@ -41,7 +41,7 @@ router.get("/v1/yearlySales",(req,res)=>{
         res.send({code:-1,mgs:"请先登录"})
         return;
     }
-    pool.query("select year(delivery_date),SUM(price*pcount) AS total from wh_order_detail GROUP BY year(delivery_date)",(err,result)=>{
+    pool.query("select year(delivery_date),SUM(sell_price*pcount) AS total from wh_order_detail GROUP BY year(delivery_date)",(err,result)=>{
         if(err){
             res.send({code:201,msg:`${err}`})
         }else{

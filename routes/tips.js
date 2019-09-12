@@ -15,6 +15,7 @@ router.get('/v1/tipList',(req,res)=>{
   pool.query(sql,(err,result)=>{
     if(err) throw err;
     if(result.length>0){
+      // console.log(result);
       res.send({code:200,msg:'query success',data:result});
     }else{
       res.send({code:201,msg:'query fail'});
