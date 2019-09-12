@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2019-09-11 21:09:33
+Date: 2019-09-12 16:22:33
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -119,7 +119,7 @@ CREATE TABLE `wh_order_detail` (
   `did` int(11) NOT NULL AUTO_INCREMENT,
   `onum` int(11) NOT NULL,
   `pid` int(11) DEFAULT NULL,
-  `price` decimal(10,2) DEFAULT NULL,
+  `sell_price` decimal(10,2) DEFAULT NULL,
   `pcount` int(11) DEFAULT NULL,
   `create_date` date DEFAULT NULL,
   `delivery_date` date DEFAULT NULL,
@@ -556,14 +556,14 @@ INSERT INTO `wh_product_pic` VALUES ('296', '43', 'img/product/sm/58a2c66aNcd10e
 -- ----------------------------
 DROP TABLE IF EXISTS `wh_provider`;
 CREATE TABLE `wh_provider` (
-  `pv_id` int(11) NOT NULL,
+  `pv_id` int(11) NOT NULL AUTO_INCREMENT,
   `pv_name` varchar(64) NOT NULL,
   `pv_address` varchar(128) NOT NULL,
   `pv_contact` varchar(16) NOT NULL,
   `pv_phone` varchar(16) NOT NULL,
   `pv_grade` int(11) DEFAULT NULL,
   PRIMARY KEY (`pv_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of wh_provider
@@ -572,6 +572,7 @@ INSERT INTO `wh_provider` VALUES ('1', '微星鼎世嘉诚专卖店', '山东省
 INSERT INTO `wh_provider` VALUES ('2', '优创（湖南）信息设备有限公司', '长沙市高新区桐梓坡西路229号麓谷国际工业园A1', '爱德华', '15687412365', null);
 INSERT INTO `wh_provider` VALUES ('3', '长沙尼桑电子科技有限责任公司', ' 中国 湖南 长沙市 芙蓉区晚报大道228号上东印', '刘伟', '13654821456', null);
 INSERT INTO `wh_provider` VALUES ('4', '长沙富之尔数码科技有限公司', '中国 湖南 长沙市天心区 长沙天心电子B座世界2', '王德胜', '18532456852', null);
+INSERT INTO `wh_provider` VALUES ('5', 'erfe', 'gfg', 'gfrdsgdrh', 'rhy656', '1');
 
 -- ----------------------------
 -- Table structure for `wh_purchase`
@@ -697,7 +698,7 @@ CREATE TABLE `wh_user` (
 -- ----------------------------
 -- Records of wh_user
 -- ----------------------------
-INSERT INTO `wh_user` VALUES ('1', 'dingding', '123456', '78527309@qq.com', '13501234567', '1', '丁伟', '1', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjEsImlhdCI6MTU2ODIwMjY0MSwiZXhwIjoxNTY4MjA2MjQxfQ.XX1vkSgzNscYjcDJdg-l60aixwV8sXGhvTp0EVx_MHs');
+INSERT INTO `wh_user` VALUES ('1', 'dingding', '123456', '78527309@qq.com', '13501234567', '1', '丁伟', '1', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjEsImlhdCI6MTU2ODI3NDY1OCwiZXhwIjoxNTY4Mjc4MjU4fQ.MPPtyftJxtRDnlHu9VPQ6e2laKLKOLpFlFTcwyabr0o');
 INSERT INTO `wh_user` VALUES ('2', 'dangdang', '234567', 'dang@qq.com', '13501234568', '1', '林当', '2', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjIsImlhdCI6MTU2NzgzMjc5MiwiZXhwIjoxNTY3ODM2MzkyfQ.VDoksGqPrcKkdS5aa7AJJOP_uUciU9ruFHdUvzdzzak');
 INSERT INTO `wh_user` VALUES ('3', 'doudou', '345678', 'dou@qq.com', '13501234569', '1', '窦志强', '3', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjMsImlhdCI6MTU2NzgzMjcxNiwiZXhwIjoxNTY3ODM2MzE2fQ.69-gQjV9J68Gd-NX04-GqcPU-7olRGb-rx8SG0S-GqI');
 INSERT INTO `wh_user` VALUES ('4', 'yaya', '456789', 'yaya@qq.com', '13501234560', '0', '秦小雅', '4', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjQsImlhdCI6MTU2Nzg0OTI5OSwiZXhwIjoxNTY3ODUyODk5fQ.usXYQIQPm0yLdi5V1PF7iRzs72dLU4r16tTSkbj6yHs');
