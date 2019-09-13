@@ -32,7 +32,7 @@ router.post("/v1/OrderSubmission",(req,res)=>{
       delete obj.total;
       return obj;
     });
-    // 循环将提交的商品插入订单详情表
+    /*****************循环将提交的商品插入订单详情表**********/
     for(let i=0;i<$orderDetail.length;i++){
       let sql="INSERT INTO wh_order_detail SET ?";
       query(sql,[$orderDetail[i]])
@@ -49,7 +49,25 @@ router.post("/v1/OrderSubmission",(req,res)=>{
         res.send({code:201,msg:`第${i+1}行商品添加失败，后续商品未能添加`})
       })
     }
-    console.log(result.insertId);
+    //******************库存数量报警功能**************************/ 
+    // 创建变量保存库存不足商品的名字
+    let pnames=[];
+    // 警报数量
+    let alarmCount=50;
+    let sql="SELECT pname,pid FROM wh_product WHERE repertory_count<?";
+    query(sql,[alarmCount]).then(result=>{
+      pnames=result;
+      if(pnames.length>0){
+        // 将所有符合条件的商品保存进pnames数组内
+        pnames=pnames.map(obj=>`${obj.pname} 库存不足${alarmCount}--商品ID：${obj.pid}`);
+        pnames=pnames.reduce((accumulator, currentValue)=>query(`INSERT INTO wh_tips VALUES('','${currentValue}',1,now())`),0)
+      }
+      console.log(pnames);
+    }).catch(err=>{
+      console.log(1111111111);
+      console.log(err);
+    })
+    /**************最终结果返回*****************/
     res.send({code:200,msg:"success",data:result.insertId});
   })
 });
