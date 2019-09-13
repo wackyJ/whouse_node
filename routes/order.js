@@ -60,12 +60,9 @@ router.post("/v1/OrderSubmission",(req,res)=>{
       if(pnames.length>0){
         // 将所有符合条件的商品保存进pnames数组内
         pnames=pnames.map(obj=>`${obj.pname} 库存不足${alarmCount}--商品ID：${obj.pid}`);
-        pnames=pnames.reduce((accumulator, currentValue)=>query(`INSERT INTO wh_tips VALUES('','${currentValue}',1,now())`),0)
+        pnames.reduce((accumulator, currentValue)=>query(`INSERT INTO wh_tips VALUES('','${currentValue}',1,now())`),0)
       }
-      console.log(pnames);
-    }).catch(err=>{
-      console.log(1111111111);
-      console.log(err);
+      // console.log(pnames);
     })
     /**************最终结果返回*****************/
     res.send({code:200,msg:"success",data:result.insertId});

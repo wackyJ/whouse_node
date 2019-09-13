@@ -1,7 +1,7 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : zither
+Source Server         : wackyJ
 Source Server Version : 50505
 Source Host           : localhost:3306
 Source Database       : whousedb
@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2019-09-12 16:22:33
+Date: 2019-09-13 20:28:24
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -97,7 +97,7 @@ CREATE TABLE `wh_order` (
   KEY `uid` (`uid`) USING BTREE,
   CONSTRAINT `wh_order_ibfk_1` FOREIGN KEY (`cid`) REFERENCES `wh_client` (`cid`),
   CONSTRAINT `wh_order_ibfk_2` FOREIGN KEY (`uid`) REFERENCES `wh_user` (`uid`)
-) ENGINE=InnoDB AUTO_INCREMENT=2019081903 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB AUTO_INCREMENT=2019081910 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
 -- ----------------------------
 -- Records of wh_order
@@ -110,6 +110,13 @@ INSERT INTO `wh_order` VALUES ('2019071501', '1', '', '2019-07-15', '2019-07-15'
 INSERT INTO `wh_order` VALUES ('2019081701', '3', '', '2019-08-17', '2019-08-17', '5', '1', '', '');
 INSERT INTO `wh_order` VALUES ('2019081901', '1', '', '2019-08-19', '2019-08-19', '5', '1', '', '');
 INSERT INTO `wh_order` VALUES ('2019081902', '1', '', '2019-08-19', '2019-08-19', '5', '1', '', '');
+INSERT INTO `wh_order` VALUES ('2019081903', '1', null, '2019-09-13', '2019-09-13', '未发货', '1', '120000/120100/120101', '3213213');
+INSERT INTO `wh_order` VALUES ('2019081904', '1', null, '2019-09-13', '2019-09-13', '今日发货', '1', '120000/120100/120101', '14v');
+INSERT INTO `wh_order` VALUES ('2019081905', '1', null, '2019-09-13', '2019-09-13', '今日发货', '1', '120000/120100/120101', '12314');
+INSERT INTO `wh_order` VALUES ('2019081906', '3', null, '2019-09-13', '2019-09-13', '今日发货', '1', '110000/110100/110101', '23123');
+INSERT INTO `wh_order` VALUES ('2019081907', '1', null, '2019-09-13', '2019-09-13', '普通退货', '1', '110000/110100/110101', '12312');
+INSERT INTO `wh_order` VALUES ('2019081908', '1', '1', '2019-09-13', '2019-09-13', '今日发货', '1', '120000/120100/120101', '1');
+INSERT INTO `wh_order` VALUES ('2019081909', '1', null, '2019-09-13', '2019-09-13', '今日发货', '1', '120000/120100/120101', '23123');
 
 -- ----------------------------
 -- Table structure for `wh_order_detail`
@@ -126,7 +133,7 @@ CREATE TABLE `wh_order_detail` (
   PRIMARY KEY (`did`),
   KEY `onum` (`onum`),
   CONSTRAINT `wh_order_detail_ibfk_1` FOREIGN KEY (`onum`) REFERENCES `wh_order` (`onum`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of wh_order_detail
@@ -140,6 +147,13 @@ INSERT INTO `wh_order_detail` VALUES ('6', '2019071501', '8', '3499.00', '3', '2
 INSERT INTO `wh_order_detail` VALUES ('7', '2019081701', '5', '4999.00', '5', '2019-08-17', '2019-08-17');
 INSERT INTO `wh_order_detail` VALUES ('8', '2019081901', '13', '4299.00', '3', '2019-08-19', '2019-08-19');
 INSERT INTO `wh_order_detail` VALUES ('9', '2019081902', '11', '5399.00', '5', '2019-08-19', '2019-08-19');
+INSERT INTO `wh_order_detail` VALUES ('10', '2019081903', '1', '6988.00', '23', '2019-09-13', '2019-09-13');
+INSERT INTO `wh_order_detail` VALUES ('11', '2019081904', '1', '6988.00', '1', '2019-09-13', '2019-09-13');
+INSERT INTO `wh_order_detail` VALUES ('12', '2019081905', '21', '5299.00', '3', '2019-09-13', '2019-09-13');
+INSERT INTO `wh_order_detail` VALUES ('13', '2019081906', '3', '7488.00', '23', '2019-09-13', '2019-09-13');
+INSERT INTO `wh_order_detail` VALUES ('14', '2019081907', '1', '6988.00', '23', '2019-09-13', '2019-09-13');
+INSERT INTO `wh_order_detail` VALUES ('15', '2019081908', '23', '6699.00', '123', '2019-09-13', '2019-09-13');
+INSERT INTO `wh_order_detail` VALUES ('16', '2019081909', '1', '6988.00', '100', '2019-09-13', '2019-09-13');
 
 -- ----------------------------
 -- Table structure for `wh_product`
@@ -174,9 +188,9 @@ CREATE TABLE `wh_product` (
 -- ----------------------------
 -- Records of wh_product
 -- ----------------------------
-INSERT INTO `wh_product` VALUES ('1', '1', 'AppleMacBook Air', '6988.00', '双核i5/8GB内存/128GB闪存', 'MacOS', '8G', '1920*1080', '集成显卡', 'Intel i5低功耗版', '其它', '轻薄本', '128G固态', '150123456789', '2968', '432', '1', '1');
+INSERT INTO `wh_product` VALUES ('1', '1', 'AppleMacBook Air', '6988.00', '双核i5/8GB内存/128GB闪存', 'MacOS', '8G', '1920*1080', '集成显卡', 'Intel i5低功耗版', '其它', '轻薄本', '128G固态', '150123456789', '3115', '285', '1', '1');
 INSERT INTO `wh_product` VALUES ('2', '1', 'AppleMacBook Air', '8268.00', '双核i5/8GB内存/256GB闪存', 'MacOS', '8G', '1920*1080', '集成显卡', 'Intel i5低功耗版', '其它', '轻薄本', '256G固态', '150223456789', '1922', '378', '0', '3');
-INSERT INTO `wh_product` VALUES ('3', '1', 'AppleMacBook Air', '7488.00', '定制款：双核i7/8G内存/128G闪存', 'MacOS', '8G', '1920*1080', '集成显卡', 'Intel i7低功耗版', '其它', '轻薄本', '128G固态', '150323456789', '733', '267', '0', '2');
+INSERT INTO `wh_product` VALUES ('3', '1', 'AppleMacBook Air', '7488.00', '定制款：双核i7/8G内存/128G闪存', 'MacOS', '8G', '1920*1080', '集成显卡', 'Intel i7低功耗版', '其它', '轻薄本', '128G固态', '150323456789', '756', '244', '0', '2');
 INSERT INTO `wh_product` VALUES ('4', '1', 'AppleMacBook Air', '7888.00', '定制款：双核i7/8G内存/256G闪存', 'MacOS', '8G', '1920*1080', '集成显卡', 'Intel i7低功耗版', '其它', '轻薄本', '256G固态', '150323456789', '105', '295', '0', '4');
 INSERT INTO `wh_product` VALUES ('5', '2', '小米Air', '4999.00', '【13.3英寸】I5-6200U 8G 256G', 'Windows 10', '8G', '全高清屏(1920*1080)', '入门级游戏独立显卡', 'Intel i5低功耗版', '1G', '轻薄本', '256G固态', '154123456789', '1527', '473', '1', '2');
 INSERT INTO `wh_product` VALUES ('6', '2', '小米Air', '3599.00', '【12.5银色】 M-7Y30 4G 128G', 'Windows 10', '4G', '全高清屏(1920*1080)', '集成显卡', 'Intel CoreM', '其它', '轻薄本', '128G固态', '153123456789', '115', '185', '0', '1');
@@ -194,9 +208,9 @@ INSERT INTO `wh_product` VALUES ('17', '5', '联想小新700', '5199.00', '小�
 INSERT INTO `wh_product` VALUES ('18', '5', '联想小新700', '5499.00', '小新700【i7 8G 500G GTX950M】', 'Windows 10', '8G', '分辨率：全高清屏(1920×1080)', 'GTX950M', 'Intel i7标准电压版', '4G', '游戏本', '128G+500G', '151523456789', '260', '140', '0', null);
 INSERT INTO `wh_product` VALUES ('19', '6', '戴尔燃7000', '5299.00', '【流光银】i5-7200u 4G 128 500G', 'Windows 10', '4G', '全高清屏(1920×1080)', '入门级游戏独立显卡', 'Intel i5低功耗版', '2G', '轻薄本', '128G+500G', '151923456789', '911', '189', '0', null);
 INSERT INTO `wh_product` VALUES ('20', '6', '戴尔燃7000', '6599.00', '【溢彩金】i7-7500u 8G 128 1T', 'Windows 10', '8G', '全高清屏(1920×1080)', '入门级游戏独立显卡', 'Intel i7低功耗版', '2G', '轻薄本', '128G+500G', '150823456789', '1930', '270', '1', null);
-INSERT INTO `wh_product` VALUES ('21', '6', '戴尔燃7000', '5299.00', '【元気粉】i5-7200u 4G 128 500G', 'Windows 10', '4G', '全高清屏(1920×1080)', '入门级游戏独立显卡', 'Intel i5低功耗版', '2G', '轻薄本', '128G+500G', '151023456789', '987', '313', '1', null);
+INSERT INTO `wh_product` VALUES ('21', '6', '戴尔燃7000', '5299.00', '【元気粉】i5-7200u 4G 128 500G', 'Windows 10', '4G', '全高清屏(1920×1080)', '入门级游戏独立显卡', 'Intel i5低功耗版', '2G', '轻薄本', '128G+500G', '151023456789', '990', '310', '1', null);
 INSERT INTO `wh_product` VALUES ('22', '7', '戴尔灵越游匣15PR-5745B', '6999.00', '宗师版 i7-7700HQ 8G GTX1050 4G', 'Windows 10', '8G', '全高清屏(1920×1080)', 'GTX960M', 'Intel i7标准电压版', '4G', '游戏本', '128G+1T', '148123456789', '1901', '199', '1', null);
-INSERT INTO `wh_product` VALUES ('23', '7', '戴尔灵越游匣15PR-5645SE', '6699.00', '枪弹版 i5-7300HQ 8G GTX1050 4G', 'Windows 10', '8G', '全高清屏(1920×1080)', 'GTX960M', 'Intel i5标准电压版', '4G', '游戏本', '128G+1T', '153123456789', '1231', '369', '0', null);
+INSERT INTO `wh_product` VALUES ('23', '7', '戴尔灵越游匣15PR-5645SE', '6699.00', '枪弹版 i5-7300HQ 8G GTX1050 4G', 'Windows 10', '8G', '全高清屏(1920×1080)', 'GTX960M', 'Intel i5标准电压版', '4G', '游戏本', '128G+1T', '153123456789', '1354', '246', '0', null);
 INSERT INTO `wh_product` VALUES ('24', '7', '戴尔灵越游匣15PR-5645SE', '7999.00', '枪弹版 i7-7700HQ 8G GTX1050 4G', 'Windows 10', '8G', '全高清屏(1920×1080)', 'GTX960M', 'Intel i7标准电压版', '4G', '游戏本', '128G+1T', '1539923456789', '221', '179', '0', null);
 INSERT INTO `wh_product` VALUES ('25', '7', '戴尔游匣', '6099.00', '精锐版 i7-6700HQ 4G GTX960 4G', 'Windows 10', '4G', '全高清屏(1920×1080)', 'GTX960M', 'Intel i7标准电压版', '4G', '游戏本', '128G+1T', '1519123456789', '711', '289', '1', null);
 INSERT INTO `wh_product` VALUES ('26', '7', '戴尔游匣', '5299.00', '精锐版 i5-6300HQ 4G GTX960 4G', 'Windows 10', '4G', '全高清屏(1920×1080)', 'GTX960M', 'Intel i5标准电压版', '4G', '游戏本', '128G+1T', '1529123456789', '319', '181', '0', null);
@@ -579,7 +593,7 @@ INSERT INTO `wh_provider` VALUES ('5', 'erfe', 'gfg', 'gfrdsgdrh', 'rhy656', '1'
 -- ----------------------------
 DROP TABLE IF EXISTS `wh_purchase`;
 CREATE TABLE `wh_purchase` (
-  `pur_id` int(11) NOT NULL AUTO_INCREMENT,
+  `pur_num` int(11) NOT NULL AUTO_INCREMENT,
   `pid` int(11) NOT NULL,
   `pur_price` decimal(10,2) NOT NULL,
   `pur_count` int(11) NOT NULL,
@@ -588,18 +602,38 @@ CREATE TABLE `wh_purchase` (
   `remark` varchar(64) DEFAULT NULL,
   `uid` int(11) NOT NULL,
   `pur_date` date NOT NULL,
-  PRIMARY KEY (`pur_id`),
+  PRIMARY KEY (`pur_num`),
   KEY `pid` (`pid`),
   KEY `uid` (`uid`),
-  KEY `pv_id` (`pv_id`),
-  CONSTRAINT `wh_purchase_ibfk_1` FOREIGN KEY (`pid`) REFERENCES `wh_product` (`pid`),
-  CONSTRAINT `wh_purchase_ibfk_2` FOREIGN KEY (`uid`) REFERENCES `wh_user` (`uid`),
-  CONSTRAINT `wh_purchase_ibfk_3` FOREIGN KEY (`pv_id`) REFERENCES `wh_provider` (`pv_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  KEY `pv_id` (`pv_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2147483648 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of wh_purchase
 -- ----------------------------
+INSERT INTO `wh_purchase` VALUES ('20190913', '0', '0.00', '0', '0.00', '0', null, '1', '2019-09-13');
+
+-- ----------------------------
+-- Table structure for `wh_purchase_detail`
+-- ----------------------------
+DROP TABLE IF EXISTS `wh_purchase_detail`;
+CREATE TABLE `wh_purchase_detail` (
+  `pur_id` int(11) NOT NULL AUTO_INCREMENT,
+  `pur_num` int(11) NOT NULL,
+  `pid` int(11) DEFAULT NULL,
+  `pur_price` decimal(10,2) DEFAULT NULL,
+  `pur_count` int(11) DEFAULT NULL,
+  `total` decimal(11,0) DEFAULT NULL,
+  `remark` varchar(64) DEFAULT NULL,
+  `uid` int(11) DEFAULT NULL,
+  `pur_date` date DEFAULT NULL,
+  PRIMARY KEY (`pur_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+-- Records of wh_purchase_detail
+-- ----------------------------
+INSERT INTO `wh_purchase_detail` VALUES ('2', '20190913', '1', '6880.00', '3', '20640', null, '1', '2019-09-13');
 
 -- ----------------------------
 -- Table structure for `wh_receiver_address`
@@ -635,27 +669,14 @@ CREATE TABLE `wh_tips` (
   `type` varchar(1) NOT NULL COMMENT '0:入库；1：出库',
   `create_time` datetime NOT NULL COMMENT '创建时间',
   PRIMARY KEY (`tip_id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
 -- ----------------------------
 -- Records of wh_tips
 -- ----------------------------
-INSERT INTO `wh_tips` VALUES ('1', '测试数据', '0', '2019-09-08 11:03:05');
-INSERT INTO `wh_tips` VALUES ('2', '测试数据', '0', '2019-09-08 11:03:05');
-INSERT INTO `wh_tips` VALUES ('3', '测试数据', '0', '2019-09-08 11:03:06');
-INSERT INTO `wh_tips` VALUES ('4', '测试数据', '0', '2019-09-08 11:03:06');
-INSERT INTO `wh_tips` VALUES ('5', '测试数据', '0', '2019-09-08 11:03:06');
-INSERT INTO `wh_tips` VALUES ('6', '测试数据', '0', '2019-09-08 11:03:07');
-INSERT INTO `wh_tips` VALUES ('7', '测试数据', '0', '2019-09-08 11:03:07');
-INSERT INTO `wh_tips` VALUES ('8', '测试数据', '0', '2019-09-08 11:03:07');
-INSERT INTO `wh_tips` VALUES ('9', '测试数据', '0', '2019-09-08 11:03:07');
-INSERT INTO `wh_tips` VALUES ('10', '测试数据', '0', '2019-09-08 11:03:08');
-INSERT INTO `wh_tips` VALUES ('11', '测试数据', '0', '2019-09-08 11:03:08');
-INSERT INTO `wh_tips` VALUES ('12', '测试数据', '0', '2019-09-08 11:03:08');
-INSERT INTO `wh_tips` VALUES ('13', '测试数据', '0', '2019-09-08 11:03:08');
-INSERT INTO `wh_tips` VALUES ('14', '测试数据', '0', '2019-09-08 11:03:08');
-INSERT INTO `wh_tips` VALUES ('15', '测试数据', '0', '2019-09-08 11:03:08');
-INSERT INTO `wh_tips` VALUES ('16', '测试数据', '0', '2019-09-08 11:03:09');
+INSERT INTO `wh_tips` VALUES ('18', 'ThinkPadE480c 库存不足50--商品ID：9', '1', '2019-09-13 19:03:07');
+INSERT INTO `wh_tips` VALUES ('19', '华硕(ASUS)13.3英寸RX310UQ金属超极本 学生 商务 库存不足50--商品ID：16', '1', '2019-09-13 19:03:07');
+INSERT INTO `wh_tips` VALUES ('21', '商品ID：1的库存增加了3件', '0', '2019-09-13 20:27:24');
 
 -- ----------------------------
 -- Table structure for `wh_token`
@@ -698,7 +719,7 @@ CREATE TABLE `wh_user` (
 -- ----------------------------
 -- Records of wh_user
 -- ----------------------------
-INSERT INTO `wh_user` VALUES ('1', 'dingding', '123456', '78527309@qq.com', '13501234567', '1', '丁伟', '1', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjEsImlhdCI6MTU2ODI3NDY1OCwiZXhwIjoxNTY4Mjc4MjU4fQ.MPPtyftJxtRDnlHu9VPQ6e2laKLKOLpFlFTcwyabr0o');
+INSERT INTO `wh_user` VALUES ('1', 'dingding', '123456', '78527309@qq.com', '13501234567', '1', '丁伟', '1', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjEsImlhdCI6MTU2ODM3NzYxMSwiZXhwIjoxNTY4MzgxMjExfQ.KX1g6FLhtPv7ZtrmzL8yQjhntx_zY4KVvv9ZvczNj08');
 INSERT INTO `wh_user` VALUES ('2', 'dangdang', '234567', 'dang@qq.com', '13501234568', '1', '林当', '2', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjIsImlhdCI6MTU2NzgzMjc5MiwiZXhwIjoxNTY3ODM2MzkyfQ.VDoksGqPrcKkdS5aa7AJJOP_uUciU9ruFHdUvzdzzak');
 INSERT INTO `wh_user` VALUES ('3', 'doudou', '345678', 'dou@qq.com', '13501234569', '1', '窦志强', '3', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjMsImlhdCI6MTU2NzgzMjcxNiwiZXhwIjoxNTY3ODM2MzE2fQ.69-gQjV9J68Gd-NX04-GqcPU-7olRGb-rx8SG0S-GqI');
 INSERT INTO `wh_user` VALUES ('4', 'yaya', '456789', 'yaya@qq.com', '13501234560', '0', '秦小雅', '4', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjQsImlhdCI6MTU2Nzg0OTI5OSwiZXhwIjoxNTY3ODUyODk5fQ.usXYQIQPm0yLdi5V1PF7iRzs72dLU4r16tTSkbj6yHs');

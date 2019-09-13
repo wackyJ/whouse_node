@@ -161,20 +161,22 @@ router.post("/v1/purchase",(req,res)=>{
     obj.pur_date=purchaseForm.pur_date;
     return obj;
   })
+  let insertId;
   // console.log(purchaseForm,productDetail);
   let sql="INSERT INTO wh_purchase SET ?";
   query(sql,[purchaseForm])
   .then(result=>{
+    insertId=result.insertId;
     for(let i=0;i<productDetail.length;i++){
       let sql="INSERT INTO wh_purchase_detail SET ?";
-      query(sql,[productDetail[i]]).then(result=>{}).catch(()=>{
-        res.send({code:201,msg:"success"})
+      query(sql,[productDetail[i]]).then(result=>{
+        let obj=productDetail[i];
+        // 如果成功录入数据库则同步更新到系统提示信息中
+        let msg=`商品ID：${obj.pid}的库存增加了${obj.pur_count}件`;
+        query(`INSERT INTO wh_tips VALUES('','${msg}',0,now())`);
       })
     }
-    res.send({code:200,msg:"success"});
-  })
-  .catch(err=>{
-    res.send({code:201,msg:"success"})
+    res.send({code:200,msg:"success",data:insertId});
   })
 })
 
