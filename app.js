@@ -18,7 +18,7 @@ var orderRouter = require('./routes/order');
 var settingRouter = require('./routes/setting');
 var tipsRouter = require('./routes/tips');
 var logRouter = require('./routes/log');
-// var bodyParser =  require('body-parser');
+var logisticsRouter = require('./routes/logistics')
 
 var app = express();
 app.use(cors({
@@ -53,6 +53,7 @@ app.use('/order',orderRouter);
 app.use('/setting',settingRouter);
 app.use('/tips',tipsRouter);
 app.use('/log',logRouter);
+app.use('./logistics',logisticsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req,res, next) {
