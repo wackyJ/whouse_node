@@ -53,7 +53,7 @@ app.use('/order',orderRouter);
 app.use('/setting',settingRouter);
 app.use('/tips',tipsRouter);
 app.use('/log',logRouter);
-app.use('./logistics',logisticsRouter);
+app.use('/logistics',logisticsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req,res, next) {
