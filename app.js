@@ -2,7 +2,7 @@ const cors = require('cors');
 const createError = require('http-errors');
 const express = require('express');
 // 用于处理文件与目录的路径
-// const path = require('path');
+const path = require('path');
 
 const cookieParser = require('cookie-parser');
 // 用来记录日志的中间件
@@ -10,7 +10,7 @@ const logger = require('morgan');
 //引入session模块，用来记录用户的登录状态
 const session = require('express-session')
 //引入路由器
-// var indexRouter = require('./routes/index');
+var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var financeRouter = require('./routes/finance');
 var productRouter = require('./routes/product');
@@ -22,7 +22,7 @@ var logisticsRouter = require('./routes/logistics')
 
 var app = express();
 app.use(cors({
-  origin:["http://127.0.0.1:8080","http://localhost:8080","http://localhost:8081"],
+  origin:["http://127.0.0.1:8080","http://localhost:4000","http://49.235.127.99:4000"],
   credentials:true
 }));
 app.use(logger('dev'));
@@ -40,12 +40,13 @@ app.use(express.static( 'public' ));
 
 // view engine setup
 // 修改为使用后缀为.html的模板文件
-/*var ejs=require('ejs');
+var ejs=require('ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.engine('html',ejs.__express);
-app.set('view engine', 'html');*/
+app.set('view engine', 'html');
 
 //使用路由器，并挂载到相应路径下
+app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/finance', financeRouter);
 app.use('/product',productRouter);
@@ -68,7 +69,7 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  // res.render('error');
+  res.render('error');
 });
 
 module.exports = app;
