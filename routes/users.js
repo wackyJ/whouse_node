@@ -94,5 +94,25 @@ router.post("/v1/login",(req, res)=>{
   });
 });*/
 
+// 6.修改用户信息
+router.post("/v1/upUsers",(req,res)=>{
+  //判断用户是否已经登录
+  let uid = req.session.uid;
+  if(!uid){
+    res.send({code:-1,msg:"请先登录"});
+    return;
+  }
+  var $uid = req.body.params.uid;
+  var $obj = req.body.params.obj;
+  console.log($obj);
+  var sql = "update wh_user set ? where uid = ?";
+  query(sql,[$obj,$uid]).then(result=>{
+    if(result.affectedRows>0){
+      res.send({code:200,msg:"update success"});
+    }else{
+      res.send({code:201,msg:"update fail"});
+    }
+  })
+})
 
 module.exports = router;
