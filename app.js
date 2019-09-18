@@ -22,7 +22,7 @@ var logisticsRouter = require('./routes/logistics')
 
 var app = express();
 app.use(cors({
-  origin:["http://127.0.0.1:8080","http://localhost:4000","http://49.235.127.99:4000"],
+  origin:["http://127.0.0.1:8080","http://localhost:8080","http://49.235.127.99:4000"],
   credentials:true
 }));
 app.use(logger('dev'));
