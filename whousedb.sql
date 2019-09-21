@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2019-09-13 20:28:24
+Date: 2019-09-20 15:16:22
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -102,14 +102,14 @@ CREATE TABLE `wh_order` (
 -- ----------------------------
 -- Records of wh_order
 -- ----------------------------
-INSERT INTO `wh_order` VALUES ('2019030501', '2', '', '2019-03-05', '2019-03-05', '5', '1', '', '');
-INSERT INTO `wh_order` VALUES ('2019040801', '2', '', '2019-04-08', '2019-04-08', '5', '1', '', '');
-INSERT INTO `wh_order` VALUES ('2019051101', '1', '', '2019-05-11', '2019-05-11', '5', '1', '', '');
-INSERT INTO `wh_order` VALUES ('2019061301', '3', '', '2019-06-13', '2019-06-13', '5', '1', '', '');
-INSERT INTO `wh_order` VALUES ('2019071501', '1', '', '2019-07-15', '2019-07-15', '5', '1', '', '');
-INSERT INTO `wh_order` VALUES ('2019081701', '3', '', '2019-08-17', '2019-08-17', '5', '1', '', '');
-INSERT INTO `wh_order` VALUES ('2019081901', '1', '', '2019-08-19', '2019-08-19', '5', '1', '', '');
-INSERT INTO `wh_order` VALUES ('2019081902', '1', '', '2019-08-19', '2019-08-19', '5', '1', '', '');
+INSERT INTO `wh_order` VALUES ('2019030501', '2', '', '2019-03-05', '2019-03-05', '5', '1', '120000/120100/120101', '');
+INSERT INTO `wh_order` VALUES ('2019040801', '2', '', '2019-04-08', '2019-04-08', '5', '1', '120000/120100/120101', '');
+INSERT INTO `wh_order` VALUES ('2019051101', '1', '', '2019-05-11', '2019-05-11', '5', '1', '120000/120100/120101', '');
+INSERT INTO `wh_order` VALUES ('2019061301', '3', '', '2019-06-13', '2019-06-13', '5', '1', '120000/120100/120101', '');
+INSERT INTO `wh_order` VALUES ('2019071501', '1', '', '2019-07-15', '2019-07-15', '5', '1', '120000/120100/120101', '');
+INSERT INTO `wh_order` VALUES ('2019081701', '3', '', '2019-08-17', '2019-08-17', '5', '1', '120000/120100/120101', '');
+INSERT INTO `wh_order` VALUES ('2019081901', '1', '', '2019-08-19', '2019-08-19', '5', '1', '120000/120100/120101', '');
+INSERT INTO `wh_order` VALUES ('2019081902', '1', '', '2019-08-19', '2019-08-19', '5', '1', '120000/120100/120101', '');
 INSERT INTO `wh_order` VALUES ('2019081903', '1', null, '2019-09-13', '2019-09-13', '未发货', '1', '120000/120100/120101', '3213213');
 INSERT INTO `wh_order` VALUES ('2019081904', '1', null, '2019-09-13', '2019-09-13', '今日发货', '1', '120000/120100/120101', '14v');
 INSERT INTO `wh_order` VALUES ('2019081905', '1', null, '2019-09-13', '2019-09-13', '今日发货', '1', '120000/120100/120101', '12314');
@@ -188,19 +188,11 @@ CREATE TABLE `wh_product` (
 -- ----------------------------
 -- Records of wh_product
 -- ----------------------------
-INSERT INTO `wh_product` VALUES ('1', '1', 'AppleMacBook Air', '6988.00', '双核i5/8GB内存/128GB闪存', 'MacOS', '8G', '1920*1080', '集成显卡', 'Intel i5低功耗版', '其它', '轻薄本', '128G固态', '150123456789', '3115', '285', '1', '1');
-INSERT INTO `wh_product` VALUES ('2', '1', 'AppleMacBook Air', '8268.00', '双核i5/8GB内存/256GB闪存', 'MacOS', '8G', '1920*1080', '集成显卡', 'Intel i5低功耗版', '其它', '轻薄本', '256G固态', '150223456789', '1922', '378', '0', '3');
-INSERT INTO `wh_product` VALUES ('3', '1', 'AppleMacBook Air', '7488.00', '定制款：双核i7/8G内存/128G闪存', 'MacOS', '8G', '1920*1080', '集成显卡', 'Intel i7低功耗版', '其它', '轻薄本', '128G固态', '150323456789', '756', '244', '0', '2');
-INSERT INTO `wh_product` VALUES ('4', '1', 'AppleMacBook Air', '7888.00', '定制款：双核i7/8G内存/256G闪存', 'MacOS', '8G', '1920*1080', '集成显卡', 'Intel i7低功耗版', '其它', '轻薄本', '256G固态', '150323456789', '105', '295', '0', '4');
-INSERT INTO `wh_product` VALUES ('5', '2', '小米Air', '4999.00', '【13.3英寸】I5-6200U 8G 256G', 'Windows 10', '8G', '全高清屏(1920*1080)', '入门级游戏独立显卡', 'Intel i5低功耗版', '1G', '轻薄本', '256G固态', '154123456789', '1527', '473', '1', '2');
 INSERT INTO `wh_product` VALUES ('6', '2', '小米Air', '3599.00', '【12.5银色】 M-7Y30 4G 128G', 'Windows 10', '4G', '全高清屏(1920*1080)', '集成显卡', 'Intel CoreM', '其它', '轻薄本', '128G固态', '153123456789', '115', '185', '0', '1');
 INSERT INTO `wh_product` VALUES ('7', '2', '小米Air', '3599.00', '【12.5金色】 M-7Y30 4G 128G', 'Windows 10', '4G', '全高清屏(1920*1080)', '集成显卡', 'Intel CoreM', '其它', '轻薄本', '128G固态', '156123456789', '812', '188', '1', null);
-INSERT INTO `wh_product` VALUES ('8', '2', '小米Air', '3499.00', '【12.5英寸】M-6Y30 4G 128G', 'Windows 10', '4G', '全高清屏(1920*1080)', '集成显卡', 'Intel CoreM', '其它', '轻薄本', '128G固态', '157123456789', '1081', '119', '0', null);
 INSERT INTO `wh_product` VALUES ('9', '3', 'ThinkPadE480c', '3499.00', '【E480C-2017新】i3 4G 500G独显', 'Windows10', '4G', '标准屏(1366×768)', '入门级游戏独立显卡', 'Intel i3', '2G', '常规笔记本', '500G', '150423456789', '1461', '39', '1', null);
 INSERT INTO `wh_product` VALUES ('10', '3', 'ThinkPadE480c', '4499.00', '【E480C-2017新】i5 4G 500G', 'Windows10', '4G', '标准屏(1366×768)', '入门级游戏独立显卡', 'Intel i5低功耗版', '2G', '常规笔记本', '500G', '151423456789', '733', '267', '0', null);
-INSERT INTO `wh_product` VALUES ('11', '3', 'ThinkPadE480c', '5399.00', '【E480C-2017新】i5 4G 256GSSD', 'Windows10', '4G', '标准屏(1366×768)', '入门级游戏独立显卡', 'Intel i5低功耗版', '2G', '常规笔记本', '256G固态', '152423456789', '913', '87', '1', null);
 INSERT INTO `wh_product` VALUES ('12', '3', 'ThinkPadE480c', '5999.00', '【E480C-2017新】i5 8G 256GSSD', 'Windows10', '8G', '标准屏(1366×768)', '入门级游戏独立显卡', 'Intel i5低功耗版', '2G', '常规笔记本', '256G固态', '153423456789', '112', '188', '0', null);
-INSERT INTO `wh_product` VALUES ('13', '4', '华硕(ASUS)13.3英寸RX310UQ金属超极本 学生 商务', '4299.00', '13.3英寸I3-7100U/4G/128G固态', 'Windows 10', '8G', '全高清屏(1920×1080)', '高性能游戏独立显卡', 'Intel i5低功耗版', '2G', '轻薄本', '128G固态', '151123456789', '1197', '303', '1', null);
 INSERT INTO `wh_product` VALUES ('14', '4', '华硕(ASUS)13.3英寸RX310UQ金属超极本 学生 商务', '4999.00', '13.3英寸I5/4G/128G固态', 'Windows 10', '8G', '全高清屏(1920×1080)', '高性能游戏独立显卡', 'Intel i5低功耗版', '2G', '轻薄本', '128G固态', '152123456789', '137', '63', '0', null);
 INSERT INTO `wh_product` VALUES ('15', '4', '华硕(ASUS)13.3英寸RX310UQ金属超极本 学生 商务', '5499.00', '13.3英寸I5/4G/256G/2G独显', 'Windows 10', '4G', '全高清屏(1920×1080)', '高性能游戏独立显卡', 'Intel i5低功耗版', '2G', '轻薄本', '128G固态', '153123456789', '21', '79', '0', null);
 INSERT INTO `wh_product` VALUES ('16', '4', '华硕(ASUS)13.3英寸RX310UQ金属超极本 学生 商务', '5699.00', '13.3英寸I5/8G/256G/2G独显', 'Windows 10', '8G', '全高清屏(1920×1080)', '高性能游戏独立显卡', 'Intel i5低功耗版', '2G', '轻薄本', '128G固态', '152423456789', '981', '19', '0', null);
@@ -606,7 +598,7 @@ CREATE TABLE `wh_purchase` (
   KEY `pid` (`pid`),
   KEY `uid` (`uid`),
   KEY `pv_id` (`pv_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2147483648 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=20190914 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of wh_purchase
@@ -719,7 +711,7 @@ CREATE TABLE `wh_user` (
 -- ----------------------------
 -- Records of wh_user
 -- ----------------------------
-INSERT INTO `wh_user` VALUES ('1', 'dingding', '123456', '78527309@qq.com', '13501234567', '1', '丁伟', '1', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjEsImlhdCI6MTU2ODM3NzYxMSwiZXhwIjoxNTY4MzgxMjExfQ.KX1g6FLhtPv7ZtrmzL8yQjhntx_zY4KVvv9ZvczNj08');
+INSERT INTO `wh_user` VALUES ('1', 'dingding', '123456', '78527309@qq.com', '13501234567', '1', '丁伟', '1', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjEsImlhdCI6MTU2ODk0MDA0MCwiZXhwIjoxNTY4OTQzNjQwfQ.ERumQ0bj7rCTQxKdqIDAO4YEvLVQoooggO6rsmvFOB0');
 INSERT INTO `wh_user` VALUES ('2', 'dangdang', '234567', 'dang@qq.com', '13501234568', '1', '林当', '2', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjIsImlhdCI6MTU2NzgzMjc5MiwiZXhwIjoxNTY3ODM2MzkyfQ.VDoksGqPrcKkdS5aa7AJJOP_uUciU9ruFHdUvzdzzak');
 INSERT INTO `wh_user` VALUES ('3', 'doudou', '345678', 'dou@qq.com', '13501234569', '1', '窦志强', '3', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjMsImlhdCI6MTU2NzgzMjcxNiwiZXhwIjoxNTY3ODM2MzE2fQ.69-gQjV9J68Gd-NX04-GqcPU-7olRGb-rx8SG0S-GqI');
 INSERT INTO `wh_user` VALUES ('4', 'yaya', '456789', 'yaya@qq.com', '13501234560', '0', '秦小雅', '4', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjQsImlhdCI6MTU2Nzg0OTI5OSwiZXhwIjoxNTY3ODUyODk5fQ.usXYQIQPm0yLdi5V1PF7iRzs72dLU4r16tTSkbj6yHs');
