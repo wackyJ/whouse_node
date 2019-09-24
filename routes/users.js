@@ -12,10 +12,13 @@ router.get('/', function(req, res, next) {
 router.post('/v1/register',(req,res)=>{
   // 获取前端传递的数据
   var info=req.body.params;
-  console.log(info);
+  // console.log(info);
+  var $uname = info.uname;
+  var $upwd = info.upwd;
+  var $uphone = info.uphone;
   //执行sql语句
-  var sql='INSERT INTO wh_user SET ?';
-  query(sql,[info]).then(result=>{
+  var sql='INSERT INTO wh_user(uname,upwd,uphone) values(?,md5(?),?)';
+  query(sql,[$uname,$upwd,$uphone]).then(result=>{
     if(result.affectedRows>0){
       res.send({code:200,msg:'registered successfully!'})
     }else{
@@ -28,7 +31,7 @@ router.post('/v1/register',(req,res)=>{
 router.post("/v1/login",(req, res)=>{
   let $uname=req.body.params.uname;
   let $upwd=req.body.params.upwd;
-  let sql="SELECT uid,uname,upwd,token_id,status FROM wh_user WHERE uname=? AND upwd=?";
+  let sql="SELECT uid,uname,upwd,token_id,status FROM wh_user WHERE uname = ? AND upwd = md5(?)";
   query(sql,[$uname,$upwd]).then(result=>{
       if(result.length>0){
         let token_id=result[0].token_id;
