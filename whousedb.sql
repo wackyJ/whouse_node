@@ -1,7 +1,7 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : wackyJ
+Source Server         : kl
 Source Server Version : 50505
 Source Host           : localhost:3306
 Source Database       : whousedb
@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2019-09-20 15:16:22
+Date: 2019-09-25 21:37:54
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -706,12 +706,12 @@ CREATE TABLE `wh_user` (
   PRIMARY KEY (`uid`),
   KEY `token_id` (`token_id`),
   CONSTRAINT `wh_user_ibfk_1` FOREIGN KEY (`token_id`) REFERENCES `wh_token` (`token_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of wh_user
 -- ----------------------------
-INSERT INTO `wh_user` VALUES ('1', 'dingding', '123456', '78527309@qq.com', '13501234567', '1', '丁伟', '1', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjEsImlhdCI6MTU2ODk0MDA0MCwiZXhwIjoxNTY4OTQzNjQwfQ.ERumQ0bj7rCTQxKdqIDAO4YEvLVQoooggO6rsmvFOB0');
-INSERT INTO `wh_user` VALUES ('2', 'dangdang', '234567', 'dang@qq.com', '13501234568', '1', '林当', '2', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjIsImlhdCI6MTU2NzgzMjc5MiwiZXhwIjoxNTY3ODM2MzkyfQ.VDoksGqPrcKkdS5aa7AJJOP_uUciU9ruFHdUvzdzzak');
-INSERT INTO `wh_user` VALUES ('3', 'doudou', '345678', 'dou@qq.com', '13501234569', '1', '窦志强', '3', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjMsImlhdCI6MTU2NzgzMjcxNiwiZXhwIjoxNTY3ODM2MzE2fQ.69-gQjV9J68Gd-NX04-GqcPU-7olRGb-rx8SG0S-GqI');
-INSERT INTO `wh_user` VALUES ('4', 'yaya', '456789', 'yaya@qq.com', '13501234560', '0', '秦小雅', '4', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjQsImlhdCI6MTU2Nzg0OTI5OSwiZXhwIjoxNTY3ODUyODk5fQ.usXYQIQPm0yLdi5V1PF7iRzs72dLU4r16tTSkbj6yHs');
+INSERT INTO `wh_user` VALUES ('1', 'dingding', 'e10adc3949ba59abbe56e057f20f883e', '78527309@qq.com', '13501234567', '1', '丁伟', '1', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjEsImlhdCI6MTU2OTQxODY1MCwiZXhwIjoxNTY5NDIyMjUwfQ.1zsTLIRPZvlsDrTz1Us98eEp6u06KIrkunMZm8itXKU');
+INSERT INTO `wh_user` VALUES ('2', 'dangdang', '508df4cb2f4d8f80519256258cfb975f', 'dang@qq.com', '13501234568', '1', '丁当', '2', null);
+INSERT INTO `wh_user` VALUES ('3', 'doudou', '5bd2026f128662763c532f2f4b6f2476', 'dou@163.com', '13501234789', '1', '窦志强', '3', null);
+INSERT INTO `wh_user` VALUES ('4', 'yaya', 'e35cf7b66449df565f93c607d5a81d09', 'yaya@126.com', '13501231258', '0', '秦小雅', '4', null);
