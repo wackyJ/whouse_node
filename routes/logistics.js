@@ -26,65 +26,24 @@ router.get("/v1/immediateQuery",(req,res)=>{
     })
     // console.log("end");
 })
-//物流追踪(订阅接口)，无次数限制，并发不超过30次/s
+//基于快递鸟物流追踪(订阅接口)API，无次数限制，并发不超过30次/s
 router.post("/v1/logisticsTracking",(req,res)=>{
-    let ShipperCode=req.body.params.ShipperCode;
-    let LogisticCode=req.body.params.LogisticCode;
-    let Sender=req.body.params.Sender;
-    let Receiver=req.body.params.Receiver;
-    var paramData ={
-        "ShipperCode":ShipperCode,     //快递公司编码（必填）
-        // "OrderCode":"",//订单编号
-        "LogisticCode":LogisticCode,   //快递单号（必填）
-        // "PayType":"1",//运费支付方式
-        // "ExpType":"1",//详细快递类型
-        "CustomerName":"",//ShipperCode 为 JD，必填，对应京东的青龙配送编码，也叫商家编码，格式：数字＋字母＋数字，9 位数字加一个字母，共 10 位，举例：001K123450；ShipperCode 为 SF，且快递单号非快递鸟渠道返回时，必填，对应收件人/寄件人手机号后四位；ShipperCode 为 SF，且快递单号为快递鸟渠道返回时，不填；ShipperCode 为其他快递时，不填
-        // "CustomerPwd":"",
-        // "MonthCode":"",//月结编号
-        "IsNotice":"0",//是否通知快递员上门揽件0-通知，1-不通知，不填则默认为 1
-        "Sender":Sender,
-        "Receiver":Receiver
-        /*"Sender":{
-            "Name":"1255760",          //发件人（必填）
-            "Tel":"",                  //电话或手机，必填一个
-            "Mobile":"13700000000",    //电话或手机，必填一个
-            "ProvinceName":"广东省",   //发件省（必填）
-            "CityName":"深圳市",       //发件市（必填）
-            "ExpAreaName":"福田区",    //发件区/县 （必填）
-            "Address":"测试地址"        //发件人详细地址（必填）
-        },
-        "Receiver":{
-            "Name":"1255760",          //收件人（必填）
-            "Tel":"",                  //电话或手机，必填一个
-            "Mobile":"13800000000",    //电话或手机，必填一个
-            "ProvinceName":"广东省",   //收件省（必填）
-            "CityName":"深圳市",       //收件市（必填）
-            "ExpAreaName":"龙华新区",  //收件区/县（必填）
-            "Address":"测试地址 2"    //收件人详细地址（必填）
-        }
-        // "Commodity":[
-        //     {
-        //     "GoodsName":""//商品名称
-        //     }
-        // ]*/
-    };
+    let paramData=req.body.params;
     console.log(paramData);
     var b = Buffer.from(md5(JSON.stringify(paramData)+"0ae25830-610b-4457-ab3d-e065586a4081"),'utf-8');
-    // console.log(b);
     axios.get("http://api.kdniao.com/Ebusiness/EbusinessOrderHandle.aspx",{
     params:{
-            RequestData:urlencode(JSON.stringify(paramData)),
-            EBusinessID: 1579500,
-            RequestType: 1008,
-            DataSign: urlencode(b.toString('base64')),
+        RequestData:urlencode(JSON.stringify(paramData)),
+        EBusinessID: 1579500,
+        RequestType: 1008,
+        DataSign: urlencode(b.toString('base64')),
     }}).then(result=>{
     console.log(result.data);
     res.send({code:200,msg:"success",data:result.data})
     }).catch(err=>{
     // console.log(err);
-    res.send({code:201,msg:"err"})
+    res.send({code:201,msg:err})
     })
-    // console.log("end");
 })
 //物流追踪(轨迹接收) 每次全量推送，一次最多推送 10 单
 router.post("/v1/pathPush",(req,res)=>{
